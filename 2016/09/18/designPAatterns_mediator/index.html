@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="XF2E">
 <meta property="og:description" content="中介者模式概念
 中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。">
-<meta property="og:updated_time" content="2016-10-09T08:34:58.000Z">
+<meta property="og:updated_time" content="2016-10-10T03:51:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之中介者模式">
 <meta name="twitter:description" content="中介者模式概念
@@ -326,8 +326,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -379,7 +379,7 @@
 <p>中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br><a id="more"></a><br>中介者是一个行为设计模式，通过提供一个统一的接口让系统的不同部分进行通信。一般，如果系统有很多子模块需要直接沟通，都要创建一个中央控制点让其各模块通过该中央控制点进行交互。中介者模式可以让这些子模块不需要直接沟通，而达到进行解耦的目的。</p>
 <p>打个比方，平时常见的机场交通控制系统，塔台就是中介者，它控制着飞机（子模块）的起飞和降落，因为所有的沟通都是从飞机向塔台汇报来完成的，而不是飞机之前相互沟通。中央控制系统就是该系统的关键，也就是软件设计中扮演的中介者角色。</p>
 <h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">   function Airplane(name)&#123;</div><div class="line">    if (!(this instanceof Airplane )) &#123;</div><div class="line">        return new Airplane();</div><div class="line">    &#125;</div><div class="line">        this.name=name;</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.send=function(msg,to)&#123;</div><div class="line">        tower.send(msg,to);</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.receive=function(msg)&#123;</div><div class="line">        console.log(this.name+&quot;【接收到】&quot;+msg);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var tower=&#123;</div><div class="line">        all:&#123;&#125;,</div><div class="line">        init:function (airplane) &#123;</div><div class="line">            this.all[airplane.name]=airplane;</div><div class="line">        &#125;,</div><div class="line">        send:function (msg,to) &#123;</div><div class="line">            this.all[to.name].receive(msg);</div><div class="line">        &#125;</div><div class="line">  &#125;;</div><div class="line">var airplane1=new Airplane(&quot;airplane1&quot;),</div><div class="line">    airplane2=new Airplane(&quot;airplane2&quot;);</div><div class="line">tower.signIn(airplane1);</div><div class="line">tower.signIn(airplane2);</div><div class="line">airplane1.send(&quot;我还有二百米就要降落了&quot;,airplane2);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">   function Airplane(name)&#123;</div><div class="line">    if (!(this instanceof Airplane )) &#123;</div><div class="line">        return new Airplane(name);</div><div class="line">    &#125;</div><div class="line">        this.name=name;</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.send=function(msg,to)&#123;</div><div class="line">        tower.send(msg,to);</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.receive=function(msg)&#123;</div><div class="line">        console.log(this.name+&quot;【接收到】&quot;+msg);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var tower=&#123;</div><div class="line">        all:&#123;&#125;,</div><div class="line">        init:function (airplane) &#123;</div><div class="line">            this.all[airplane.name]=airplane;</div><div class="line">        &#125;,</div><div class="line">        send:function (msg,to) &#123;</div><div class="line">            this.all[to.name].receive(msg);</div><div class="line">        &#125;</div><div class="line">  &#125;;</div><div class="line">var airplane1=new Airplane(&quot;airplane1&quot;),</div><div class="line">    airplane2=new Airplane(&quot;airplane2&quot;);</div><div class="line">tower.signIn(airplane1);</div><div class="line">tower.signIn(airplane2);</div><div class="line">airplane1.send(&quot;我还有二百米就要降落了&quot;,airplane2);</div></pre></td></tr></table></figure>
 <p><em>中介者模式一般应用于一组对象已定义良好但是以复杂的方式进行通信的场合，一般情况下，中介者模式很容易在系统中使用，但也容易在系统里误用，当系统出现了多对多交互复杂的对象群时，先不要急于使用中介者模式，而是要思考一下是不是系统设计有问题。</em></p>
 <p><em>另外，由于中介者模式把交互复杂性变成了中介者本身的复杂性，所以说中介者对象会比其它任何对象都复杂</em></p>
 
@@ -413,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/18/designPatterns_prototype/" rel="next" title="设计模式之原型模式">
-                <i class="fa fa-chevron-left"></i> 设计模式之原型模式
+              <a href="/2016/09/18/designPatterns_constructed/" rel="next" title="设计模式之构造函数模式">
+                <i class="fa fa-chevron-left"></i> 设计模式之构造函数模式
               </a>
             
           </div>

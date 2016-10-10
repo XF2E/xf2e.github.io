@@ -84,17 +84,23 @@
 
 
 
-<meta name="description" content="原型模式概念">
+<meta name="description" content="原型模式概念
+
+原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式之原型模式">
 <meta property="og:url" content="http://xf2e.github.io/2016/09/18/designPatterns_prototype/index.html">
 <meta property="og:site_name" content="XF2E">
-<meta property="og:description" content="原型模式概念">
+<meta property="og:description" content="原型模式概念
+
+原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。">
 <meta property="og:image" content="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png">
-<meta property="og:updated_time" content="2016-10-09T08:35:04.000Z">
+<meta property="og:updated_time" content="2016-10-10T03:50:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式之原型模式">
-<meta name="twitter:description" content="原型模式概念">
+<meta name="twitter:description" content="原型模式概念
+
+原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。">
 <meta name="twitter:image" content="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png">
 
 
@@ -325,8 +331,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -375,10 +381,8 @@
 
       
         <h2 id="原型模式概念"><a href="#原型模式概念" class="headerlink" title="原型模式概念"></a>原型模式概念</h2><img src="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png" class="full-image" alt="alt" title="title">
-<a id="more"></a>
 <blockquote>
-<p>原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。</p>
-<p>原型模式多用于创建复杂的或者耗时的实例，因为这种情况下，复制一个已经存在的实例使程序运行更高效；或者创建值相等，只是命名不一样的同类数据。</p>
+<p>原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。<br><a id="more"></a><br>原型模式多用于创建复杂的或者耗时的实例，因为这种情况下，复制一个已经存在的实例使程序运行更高效；或者创建值相等，只是命名不一样的同类数据。</p>
 <p>真正的原型继承是作为最新版的ECMAScript5标准提出的，使用Object.create方法来创建这样的对象，该方法创建指定的对象，其对象的prototype有指定的对象（也就是该方法传进的第一个参数对象），也可以包含其他可选的指定属性。例如Object.create(prototype, optionalDescriptorObjects)</p>
 </blockquote>
 <h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// 因为不是构造函数，所以不用大写</div><div class="line">var girl = &#123;</div><div class="line">    name:&apos;郝阿由&apos;,//小孩的姓名</div><div class="line">    weight:&apos;7斤八两&apos; //小孩的体重</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 使用Object.create创建一个女孩</div><div class="line">var bady = Object.create(girl);</div><div class="line">bady.name = &apos;郝美丽&apos;;</div><div class="line">Object.create运行你直接从其它对象继承过来，使用该方法的第二个参数，你可以初始化额外的其它属性。例如：</div><div class="line"></div><div class="line">var girl = &#123;</div><div class="line">    create: function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var bady = Object.create(girl, &#123;</div><div class="line">    &apos;name&apos;: &#123;</div><div class="line">        value:&quot;郝美丽&quot;,</div><div class="line">        enumerable: true // 默认writable:false, configurable:false</div><div class="line"> &#125;,</div><div class="line">    &apos;weight&apos;: &#123;</div><div class="line">        value: &apos;7斤八两&apos;,</div><div class="line">        enumerable: true</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -386,7 +390,7 @@
 <ul>
 <li>如果你希望自己去实现原型模式，而不直接使用Object.create 。结合构造函数模式，把上面的代码重新实现：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function Baby(data)&#123;</div><div class="line">    if(!(this instanceof Baby))&#123;</div><div class="line">        return new Baby();</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    this.name=data.name||&apos;郝阿由&apos;; //小孩的姓名</div><div class="line">    this.weight=data.weight||&apos;7斤八两&apos;; //小孩的体重</div><div class="line"></div><div class="line">&#125;</div><div class="line">Baby.prototype.create= function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var baby=new Baby(&#123;&#125;);</div><div class="line">console.log( baby._create());</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function Baby(data)&#123;</div><div class="line">    if(!(this instanceof Baby))&#123;</div><div class="line">        return new Baby(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    this.name=data.name||&apos;郝阿由&apos;; //小孩的姓名</div><div class="line">    this.weight=data.weight||&apos;7斤八两&apos;; //小孩的体重</div><div class="line"></div><div class="line">&#125;</div><div class="line">Baby.prototype.create= function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var baby=new Baby(&#123;&#125;);</div><div class="line">console.log( baby.create());</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -418,16 +422,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/18/designPatterns_constructed/" rel="next" title="设计模式之构造函数模式">
-                <i class="fa fa-chevron-left"></i> 设计模式之构造函数模式
+              <a href="/2016/09/18/designPatterns_singleton/" rel="next" title="设计模式之单例模式">
+                <i class="fa fa-chevron-left"></i> 设计模式之单例模式
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/18/designPAatterns_mediator/" rel="prev" title="设计模式之中介者模式">
-                设计模式之中介者模式 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/18/designPatterns_constructed/" rel="prev" title="设计模式之构造函数模式">
+                设计模式之构造函数模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
