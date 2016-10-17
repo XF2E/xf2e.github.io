@@ -377,33 +377,15 @@
 
       
         
-          
-            <h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><blockquote>
+          <h2 id="同步和异步"><a href="#同步和异步" class="headerlink" title="同步和异步"></a>同步和异步</h2><blockquote>
 <p>JavaScript语言的执行环境是”单线程”（single thread）。<br>所谓”单线程”，就是指一次只能完成一件任务。<br>如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务，以此类推。</p>
 <p>这种模式的好处是实现起来比较简单，执行环境相对单纯；<br>坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。<br>常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），<br>导致整个页面卡在这个地方，其他任务无法执行。</p>
 </blockquote>
-<p><strong>为了解决这个问题，Javascript语言将任务的执行模式分成两种：同步（Synchronous）和异步（Asynchronous）。</strong></p>
-<h3 id="同步模式"><a href="#同步模式" class="headerlink" title="同步模式"></a>同步模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">同步模式：就是后一个任务等待前一个任务结束，</div><div class="line">然后再执行，程序的执行顺序与任务的排列顺序是一致的、同步的；</div></pre></td></tr></table></figure>
-<h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;./script.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>同步模式，即阻塞模式，会阻止浏览器的后续处理，停止了后续的解析，因此停止了后续的文件加载（如图像）、渲染、代码执行。<br> js 之所以要同步执行，是因为js中可能有输出document内容、修改dom、重定向等行为，所以默认同步执行才是安全的。<br>一般建议是把<code>&lt;script&gt;</code>放在页面末尾<code>&lt;/body&gt;</code>之前，这样尽可能减少这种阻塞行为，而先让页面展示出来。</p>
-<h3 id="异步模式"><a href="#异步模式" class="headerlink" title="异步模式"></a>异步模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">异步模式：每一个任务有一个或多个回调函数（callback），前一个任务结束后，不是执</div><div class="line">行后一个任务，而是执行回调函数，后一个任务则是不等前一个任务结束就执行，所以程序的</div><div class="line">执行顺序与任务的排列顺序是不一致的、异步的。</div></pre></td></tr></table></figure>
-<p><em><code>异步模式</code>又叫非阻塞。在web端，耗时很长的操作都应该异步执行，避免浏览器失去响应，最好的例子<br>就是Ajax操作。在js写server中，<code>异步模式</code>甚至是唯一的模式，因为执行环境是单线程的，如果允许同步执行所有http请求，服务器性能会急剧下降，很快就会失去响应。</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">异步调用并不会阻止代码的顺序执行，而是在将来的某一个时刻触发设置好的逻辑，所以我们</div><div class="line">并不知道逻辑什么时候会被调用</div><div class="line">只能定义当触发的时候逻辑是什么</div><div class="line">只能等待，同时可以去处理其他的逻辑</div><div class="line">异步函数，如setTimeout和setInterval，是被压入了称之为Event Loop的队列。</div><div class="line">Event Loop是一个回调函数队列。当异步函数执行时，回调函数会被压入这个队列。JavaScript引擎</div><div class="line">直到异步函数执行完成后，才会开始处理事件循环。这意味着JavaScript代码不是多线程的，即使表现</div><div class="line">的行为相似。事件循环是一个先进先出（FIFO）队列，这说明回调是按照它们被加入队列的顺序执行的。</div><div class="line">JavaScript被node选做为开发语言，就是因为写这样的代码多么简单啊。</div></pre></td></tr></table></figure></p>
-<h4 id="example-1"><a href="#example-1" class="headerlink" title="example"></a>example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;./script.js&quot; async&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>浏览器在下载执行 js 同时，还会继续进行后续页面的处理。<br>这种方法是在页面中<code>&lt;script&gt;</code>标签内，设置async属性，async属性是HTML5中新增的异步支持。</p>
-<p><strong>but</strong>这种加载方式在加载执行完之前会阻止 onload 事件的触发，而现在很多页面的代码都在 onload 时还要执行额外的渲染工作等，所以还是会阻塞部分页面的初始化处理。</p>
-<p><strong>ps</strong>不管是同步加载还是异步加载,浏览器在下载完 js 的内容后就会立即对其解析和执行。<br>异步加载，解决的只是下载阶段的问题，但代码在下载后会立即执行。<br>浏览器在解析执行 JS 阶段是阻塞任何操作的，这时的浏览器处于无响应状态。<br>下载 script 需要明显的时间，但容易忽略了第二阶段，解析和执行也是需要时间的。script的解析和执行所花的时间比我们想象的要多，尤其是script 很多很大的时候。有些是需要立刻执行，而有些则不需要（比如只是在展示某个界面或执行某个操作时才需要）。<strong>*注：</strong>如何在第一次需要的时候再执行。感兴趣的可以看看<code>ControlJS</code> *</p>
-<h4 id="处理异步代码"><a href="#处理异步代码" class="headerlink" title="处理异步代码"></a>处理异步代码</h4><h5 id="callback"><a href="#callback" class="headerlink" title="callback"></a>callback</h5><p>这种异步的方式是最基础的实现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> fs.readFile(fileA, function (err, data) &#123;</div><div class="line">  fs.readFile(fileB, function (err, data) &#123;</div><div class="line">    // ...</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>如果涉及到多个这样的异步操作，会有复杂的回调嵌套，就是传说中的回调地狱。</p>
-<h6 id="避免这种回调地狱"><a href="#避免这种回调地狱" class="headerlink" title="避免这种回调地狱"></a>避免这种回调地狱</h6><ul>
-<li>命名函数<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">清除嵌套回调的一个便捷的解决方案是简单的避免双层以上的嵌套。</div><div class="line">传递一个命名函数给作为回调参数，而不是传递匿名函数。</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h5><p><a href="">点这里查看详情</a></p>
-<h5 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h5><p><a href="">点这里查看详情</a></p>
-<h5 id="await-async"><a href="#await-async" class="headerlink" title="await/async"></a>await/async</h5><p><a href="">点这里查看详情</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/12/sync_async/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -451,8 +433,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/18/designPatterns_prototype/" itemprop="url">
-                  设计模式之原型模式
+                <a class="post-title-link" href="/2016/09/18/designPAatterns_mediator/" itemprop="url">
+                  设计模式之中介者模式
                 </a>
               
             
@@ -495,8 +477,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/18/designPatterns_prototype/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/18/designPatterns_prototype/" itemprop="commentsCount"></span>
+                <a href="/2016/09/18/designPAatterns_mediator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/18/designPAatterns_mediator/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -506,7 +488,7 @@
 
           
           
-             <span id="/2016/09/18/designPatterns_prototype/" class="leancloud_visitors" data-flag-title="设计模式之原型模式">
+             <span id="/2016/09/18/designPAatterns_mediator/" class="leancloud_visitors" data-flag-title="设计模式之中介者模式">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -529,11 +511,10 @@
 
       
         
-          <h2 id="原型模式概念"><a href="#原型模式概念" class="headerlink" title="原型模式概念"></a>原型模式概念</h2><img src="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png" class="full-image" alt="alt" title="title" />
-<blockquote>
-<p>原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。<br>
+          <h2 id="中介者模式概念"><a href="#中介者模式概念" class="headerlink" title="中介者模式概念"></a>中介者模式概念</h2><blockquote>
+<p>中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/18/designPatterns_prototype/#more" rel="contents">
+            <a class="btn" href="/2016/09/18/designPAatterns_mediator/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -716,8 +697,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/18/designPAatterns_mediator/" itemprop="url">
-                  设计模式之中介者模式
+                <a class="post-title-link" href="/2016/09/18/designPatterns_prototype/" itemprop="url">
+                  设计模式之原型模式
                 </a>
               
             
@@ -760,8 +741,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/18/designPAatterns_mediator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/18/designPAatterns_mediator/" itemprop="commentsCount"></span>
+                <a href="/2016/09/18/designPatterns_prototype/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/18/designPatterns_prototype/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -771,7 +752,7 @@
 
           
           
-             <span id="/2016/09/18/designPAatterns_mediator/" class="leancloud_visitors" data-flag-title="设计模式之中介者模式">
+             <span id="/2016/09/18/designPatterns_prototype/" class="leancloud_visitors" data-flag-title="设计模式之原型模式">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -794,10 +775,11 @@
 
       
         
-          <h2 id="中介者模式概念"><a href="#中介者模式概念" class="headerlink" title="中介者模式概念"></a>中介者模式概念</h2><blockquote>
-<p>中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br>
+          <h2 id="原型模式概念"><a href="#原型模式概念" class="headerlink" title="原型模式概念"></a>原型模式概念</h2><img src="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png" class="full-image" alt="alt" title="title" />
+<blockquote>
+<p>原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/18/designPAatterns_mediator/#more" rel="contents">
+            <a class="btn" href="/2016/09/18/designPatterns_prototype/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

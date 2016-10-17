@@ -94,7 +94,7 @@ JavaScript语言的执行环境是”单线程”（single thread）。所谓”
 <meta property="og:description" content="同步和异步
 JavaScript语言的执行环境是”单线程”（single thread）。所谓”单线程”，就是指一次只能完成一件任务。如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务，以此类推。
 这种模式的好处是实现起来比较简单，执行环境相对单纯；坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。常见的浏览器无响应（假死），往往就是因为某一段Javasc">
-<meta property="og:updated_time" content="2016-10-17T08:45:23.000Z">
+<meta property="og:updated_time" content="2016-10-17T09:21:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步和异步">
 <meta name="twitter:description" content="同步和异步
@@ -382,6 +382,7 @@ JavaScript语言的执行环境是”单线程”（single thread）。所谓”
 <p>JavaScript语言的执行环境是”单线程”（single thread）。<br>所谓”单线程”，就是指一次只能完成一件任务。<br>如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务，以此类推。</p>
 <p>这种模式的好处是实现起来比较简单，执行环境相对单纯；<br>坏处是只要有一个任务耗时很长，后面的任务都必须排队等着，会拖延整个程序的执行。<br>常见的浏览器无响应（假死），往往就是因为某一段Javascript代码长时间运行（比如死循环），<br>导致整个页面卡在这个地方，其他任务无法执行。</p>
 </blockquote>
+<a id="more"></a>
 <p><strong>为了解决这个问题，Javascript语言将任务的执行模式分成两种：同步（Synchronous）和异步（Asynchronous）。</strong></p>
 <h3 id="同步模式"><a href="#同步模式" class="headerlink" title="同步模式"></a>同步模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">同步模式：就是后一个任务等待前一个任务结束，</div><div class="line">然后再执行，程序的执行顺序与任务的排列顺序是一致的、同步的；</div></pre></td></tr></table></figure>
 <h4 id="example"><a href="#example" class="headerlink" title="example"></a>example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;./script.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
@@ -445,8 +446,8 @@ JavaScript语言的执行环境是”单线程”（single thread）。所谓”
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/18/designPatterns_prototype/" rel="next" title="设计模式之原型模式">
-                <i class="fa fa-chevron-left"></i> 设计模式之原型模式
+              <a href="/2016/09/18/designPAatterns_mediator/" rel="next" title="设计模式之中介者模式">
+                <i class="fa fa-chevron-left"></i> 设计模式之中介者模式
               </a>
             
           </div>
