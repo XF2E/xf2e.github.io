@@ -4,6 +4,407 @@
   
     
     <entry>
+      <title><![CDATA[vue-router1]]></title>
+      <url>http://xf2e.github.io/2016/11/24/vue_router1/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>以下分享来自团队童鞋<a href="https://github.com/Peggy3399" target="_blank" rel="external">Peggy</a></p>
+</blockquote>
+<p># </p>
+<blockquote>
+<p>安装：</p>
+</blockquote>
+<pre><code>npm install vue-router --save
+</code></pre><a id="more"></a>
+<p>vue路由主要就是通过使用 router-link(默认会被渲染成一个 <code>&lt;a&gt;</code> 标签) 组件来导航，通过传入 <code>to</code> 属性指定链接, 最后渲染在<code>&lt;router-view&gt;</code>中，实现SPA。</p>
+<pre><code>&lt;p&gt;
+    &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
+&lt;/p&gt;
+&lt;router-view&gt;&lt;/router-view&gt;
+</code></pre><p>我目前了解的主要是webpack + ES2015实现vue。如果要实现路由，文件基本写法就是：</p>
+<ul>
+<li>调用 Vue.use(VueRouter)</li>
+<li>定义路由组件(import导入需要渲染的组件)</li>
+<li>定义路由</li>
+<li>创建router实例</li>
+<li>创建挂载根实例(就是路由最终在页面实现的根元素)</li>
+</ul>
+<blockquote>
+<p>基本写法：</p>
+</blockquote>
+<pre><code>import Vue from &apos;vue/dist/vue&apos;
+import VueRouter from &apos;vue-router&apos;
+
+// 1. Use plugin.
+// This installs &lt;router-view&gt; and &lt;router-link&gt;,
+// and injects $router and $route to all router-enabled child components
+Vue.use(VueRouter)
+
+// 2. Define route components
+const Home = { template: &apos;&lt;div&gt;home&lt;/div&gt;&apos; }
+const Foo = { template: &apos;&lt;div&gt;foo&lt;/div&gt;&apos; }
+const Bar = { template: &apos;&lt;div&gt;bar&lt;/div&gt;&apos; }
+
+// 3. Create the router
+const router = new VueRouter({
+  mode: &apos;history&apos;,
+  base: __dirname,
+  routes: [
+    { path: &apos;/&apos;, component: Home },
+    { path: &apos;/foo&apos;, component: Foo },
+    { path: &apos;/bar&apos;, component: Bar }
+  ]
+})
+
+// 4. Create and mount root instance.
+// Make sure to inject the router.
+// Route components will be rendered inside &lt;router-view&gt;.
+new Vue({
+  router,
+  template: `
+    &lt;div id=&quot;app&quot;&gt;
+      &lt;h1&gt;Basic&lt;/h1&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;router-link to=&quot;/&quot;&gt;/&lt;/router-link&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;router-link to=&quot;/foo&quot;&gt;/foo&lt;/router-link&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;router-link to=&quot;/bar&quot;&gt;/bar&lt;/router-link&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;router-view class=&quot;view&quot;&gt;&lt;/router-view&gt;
+    &lt;/div&gt;
+  `
+}).$mount(&apos;#app&apos;)
+</code></pre><blockquote>
+<p>mode(模式)选项取值为： (默认是 “hash”):</p>
+</blockquote>
+<ul>
+<li>“hash” ：hash就是利用#做路由切换</li>
+<li>“history” ：history是利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。（需要后台配置）</li>
+<li>“abstract” ：abstract一样，只不过，history会记录历史位置</li>
+</ul>
+<blockquote>
+<p>base</p>
+</blockquote>
+<p>应用的基路径。例如，如果整个单页应用服务在 /app/ 下，然后 base 就应该设为 “/app/“。</p>
+<blockquote>
+<p>linkActiveClass</p>
+</blockquote>
+<p>全局配置 <code>&lt;router-link&gt;</code> 的默认『激活 class 类名』</p>
+<blockquote>
+<p>scrollBehavior 滚动行为</p>
+</blockquote>
+<p>注意: 这个功能只在 HTML5 history 模式下可用。</p>
+<pre><code>const router = new VueRouter({
+  routes: [...],
+  scrollBehavior (to, from, savedPosition) {
+    // return 期望滚动到哪个的位置
+  }
+})
+</code></pre><p>例子1：对于所有路由导航，简单地让页面滚动到顶部。</p>
+<pre><code>scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+}
+</code></pre><p>例子2：返回 savedPosition，在按下 后退/前进 按钮时，就会像浏览器的原生表现那样：</p>
+<pre><code>scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+        return savedPosition
+    } else {
+        return { x: 0, y: 0 }
+    }
+}
+</code></pre><p>例子3：模拟『滚动到锚点』的行为：</p>
+<pre><code>scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+        return {
+          selector: to.hash
+        }
+    }
+}
+</code></pre><p><a href="https://github.com/vuejs/vue-router/blob/next/examples/scroll-behavior/app.js" target="_blank" rel="external">一个完整例子</a></p>
+<h2 id="router-link"><a href="#router-link" class="headerlink" title="router-link"></a>router-link</h2><p><code>&lt;router-link&gt;</code>还有以下属性参数：</p>
+<ul>
+<li>to: 表示目标路由的链接。当被点击后，内部会立刻把 to 的值传到 router.push()，所以这个值可以是一个字符串或者是描述目标位置的对象。</li>
+<li>tag: 渲染为的 html 元素类型，默认是<code>&lt;a&gt;</code>.</li>
+<li>exact: 用于控制当前激活项的匹配行为。<br>举个例子，如果当前的路径是 /a 开头的，那么<code>&lt;router-link to=&quot;/a&quot;&gt;</code> 也会被设置 CSS 类名。</li>
+<li>append: 设置 append 属性后，则在当前（相对）路径前添加基路径。例如，我们从 /a 导航到一个相对路径 b，如果没有配置 append，则路径为 /b，如果配了，则为 /a/b。</li>
+<li>replace: 设置 replace 属性的话，当点击时，会调用 router.replace() 而不是 router.push()，于是导航后不会留下 history 记录。</li>
+<li>active-class: 当链接项激活时增加的 CSS 样式，默认值: “router-link-active”。</li>
+</ul>
+<blockquote>
+<p>用<code>&lt;router-link&gt;</code>可以渲染外层元素，包裹着内层的原生 <code>&lt;a&gt;</code> 标签。</p>
+</blockquote>
+<h2 id="router-view"><a href="#router-view" class="headerlink" title="router-view"></a>router-view</h2><p>就是组件被渲染时要填的坑。</p>
+<blockquote>
+<p>路由嵌套</p>
+</blockquote>
+<p>如果使用路由的嵌套，组件包含自己的嵌套 <code>&lt;router-view&gt;</code>就可以。</p>
+<pre><code>const User = {
+  template: `
+    &lt;div class=&quot;user&quot;&gt;
+      &lt;h2&gt;User {{ $route.params.id }}&lt;/h2&gt;
+      &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;/div&gt;
+  `
+}
+</code></pre><p>这时就需要在路由路径配置当中，写上children，然后进行组件自己的路由，children 配置就是像 routes 配置一样的路由配置数组。</p>
+<pre><code>const router = new VueRouter({
+  routes: [
+    { path: &apos;/user/:id&apos;, component: User,
+      children: [
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 &lt;router-view&gt; 中
+          path: &apos;profile&apos;,
+          component: UserProfile
+        },
+        {
+          // 当 /user/:id/posts 匹配成功
+          // UserPosts 会被渲染在 User 的 &lt;router-view&gt; 中
+          path: &apos;posts&apos;,
+          component: UserPosts
+        }
+      ]
+    }
+  ]
+})
+</code></pre><blockquote>
+<p>命名视图</p>
+</blockquote>
+<p>想同时（同级）展示多个视图，而不是嵌套展示,这时可以设置多个出口，也就是<code>&lt;router-view &gt;</code>，如果 <code>&lt;router-view &gt;</code> 没有设置名字，那么默认为 default。</p>
+<pre><code>&lt;router-view class=&quot;view one&quot;&gt;&lt;/router-view&gt;
+&lt;router-view class=&quot;view two&quot; name=&quot;a&quot;&gt;&lt;/router-view&gt;
+&lt;router-view class=&quot;view three&quot; name=&quot;b&quot;&gt;&lt;/router-view
+
+const router = new VueRouter({
+  routes: [
+    {
+      path: &apos;/&apos;,
+      components: {
+        default: Foo,
+        a: Bar,
+        b: Baz
+      }
+    }
+  ]
+})
+</code></pre><h2 id="router的重定向和别名"><a href="#router的重定向和别名" class="headerlink" title="router的重定向和别名"></a>router的重定向和别名</h2><blockquote>
+<p>重定向</p>
+</blockquote>
+<p>重定向我的理解就是重新定方向，本来路由要走的/a这个路由，由于重定向就会改变为/b。<br>写法： </p>
+<pre><code>{ path: &apos;/a&apos;, redirect: &apos;/b&apos; }
+</code></pre><p>也可以是有name的路由：</p>
+<pre><code>{ path: &apos;/a&apos;, redirect: { name: &apos;foo&apos; }}
+</code></pre><p>甚至是一个方法，动态返回重定向目标：</p>
+<pre><code>const router = new VueRouter({
+  routes: [
+    { path: &apos;/a&apos;, redirect: to =&gt; {
+      // 方法接收 目标路由 作为参数
+      // return 重定向的 字符串路径/路径对象
+    }}
+  ]
+})
+</code></pre><p><a href="https://github.com/vuejs/vue-router/blob/next/examples/redirect/app.js" target="_blank" rel="external">一个好的例子</a></p>
+<blockquote>
+<p>别名</p>
+</blockquote>
+<p>别名就类似于我们的小名，/a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。</p>
+<p>写法：</p>
+<pre><code>{ path: &apos;/a&apos;, component: A, alias: &apos;/b&apos; }
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[搭建一个webpack + vue项目]]></title>
+      <url>http://xf2e.github.io/2016/11/24/vue_component/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>以下分享来自团队童鞋<a href="https://github.com/Peggy3399" target="_blank" rel="external">Peggy</a></p>
+</blockquote>
+<p>##搭建一个webpack + vue项目</p>
+<ul>
+<li>npm install -g vue-cli  ==&gt;快速生成项目模版的工具</li>
+<li>vue init webpack my-project ==&gt;基于webpack的项目</li>
+<li>cd my-project</li>
+<li>npm install 安装需要的依赖<a id="more"></a>
+##组件<br>Vue的组件化功能可谓是它的一大亮点，通过将页面上某一组件的html、CSS、js代码放入一个.vue的文件中进行管理可以大大提高代码的维护性。<br>目前直接使用ES6的模块化功能，再结合Webpack进行相应打包是最热门的方案。</li>
+</ul>
+<blockquote>
+<p>基本写法：</p>
+</blockquote>
+<pre><code>// App.vue
+&lt;template&gt;
+    &lt;div class=&quot;box&quot; v-text=&quot;note&quot;&gt;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    data () {
+        return {
+            note: &apos;这是一个组件的html模板！&apos;
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+.box {
+    color: #000;
+}
+&lt;/style&gt;
+</code></pre><p><a href="https://vuefe.cn/guide/components.html" target="_blank" rel="external">组件</a></p>
+<blockquote>
+<p> data 必须是函数。</p>
+<p>全局注册</p>
+</blockquote>
+<p>注册全剧组件可以用 Vue.component(tag, constructor) 。</p>
+<pre><code>例如： Vue.component(&apos;my-component&apos;, {
+          // 选项
+        })
+</code></pre><p>组件在注册之后，才可以在父实例的模块中以自定义元素 <code>&lt;my-component&gt;</code> 的形式使用(组件名最好使用小写，并且包含一个短杠)。</p>
+<pre><code>&lt;div id=&quot;example&quot;&gt;
+  &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+// 注册
+Vue.component(&apos;my-component&apos;, {
+  template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
+})
+// 创建根实例
+new Vue({
+  el: &apos;#example&apos;
+})
+</code></pre><blockquote>
+<p>局部注册</p>
+</blockquote>
+<p>  用实例选项 components 注册局部组件。局部注册只能在对应的Vue实例下使用，所以它不能在其它Vue实例下使用。</p>
+<pre><code>例如：var Child = {
+        template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
+      }
+      new Vue({
+        // ...
+        components: {
+          // &lt;my-component&gt; 将只在父模板可用
+          &apos;my-component&apos;: Child
+        }
+      })
+</code></pre><h2 id="传递信息"><a href="#传递信息" class="headerlink" title="传递信息"></a>传递信息</h2><p>在 Vue.js 中，父子组件的关系可以总结为 props down, events up 。父组件通过 props 向下传递数据给子组件，子组件通过 events 给父组件发送消息。</p>
+<blockquote>
+<p>Props</p>
+</blockquote>
+<p>组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。</p>
+<pre><code>Vue.component(&apos;child&apos;, {
+  // 声明 props
+  props: [&apos;message&apos;],
+  // 就像 data 一样，prop 可以用在模板内
+  // 同样也可以在 vm 实例中像 “this.message” 这样使用
+  template: &apos;&lt;span&gt;{{ message }}&lt;/span&gt;&apos;
+})
+</code></pre><p>props也可以用 v-bind 绑定动态 props 到父组件的数据。每当父组件的数据变化时，也会传导给子组件。</p>
+<pre><code>&lt;div&gt;
+  &lt;input v-model=&quot;parentMsg&quot;&gt;
+  &lt;br&gt;
+  &lt;child :my-message=&quot;parentMsg&quot;&gt;&lt;/child&gt;
+&lt;/div&gt;
+</code></pre><p>(2)如果要子组件把数据传递给父组件，就需要自定义事件。</p>
+<p><a href="https://vuefe.cn/guide/components.html#自定义事件" target="_blank" rel="external">自定义事件</a></p>
+<h2 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h2><p>如果想要动态切换不同的组件，就需要使用动态组件，动态地绑定到它的 is 特性。</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#example&apos;,
+  data: {
+    currentView: &apos;home&apos;
+  },
+  components: {
+    home: { /* ... */ },
+    posts: { /* ... */ },
+    archive: { /* ... */ }
+  }
+})
+
+&lt;component v-bind:is=&quot;currentView&quot;&gt;
+  &lt;!-- 组件在 vm.currentview 变化时改变！ --&gt;
+&lt;/component&gt;
+</code></pre><p>如果把切换出去的组件想要保留它的状态或避免重新渲染，添加keep-alive指令参数，非活动组件将被缓存。</p>
+<pre><code>&lt;keep-alive&gt;
+  &lt;component :is=&quot;currentView&quot;&gt;
+    &lt;!-- 非活动组件将被缓存！ --&gt;
+  &lt;/component&gt;
+&lt;/keep-alive&gt;
+</code></pre><p>##Slots分发内容</p>
+<p>一种方式用来混合父组件的内容与子组件自己的模板。比如说：</p>
+<pre><code>&lt;app&gt;
+  &lt;app-header&gt;&lt;/app-header&gt;
+  &lt;app-footer&gt;&lt;/app-footer&gt;
+&lt;/app&gt;
+</code></pre><p>app也有自己的模板内容，这时候就需要用到slots。</p>
+<blockquote>
+<p>编辑作用域</p>
+</blockquote>
+<p>父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译。</p>
+<p>分发内容就是在父组件作用域内编译。</p>
+<blockquote>
+<p>单个Slot</p>
+</blockquote>
+<p>子组件模板只有一个没有属性的 slot 时，父组件整个内容片段将插入到 slot 所在的 DOM 位置，并替换掉 slot 标签本身。</p>
+<p>子组件<code>&lt;my-component&gt;</code>：</p>
+<pre><code>&lt;div&gt;
+    &lt;h2&gt;I&apos;m the child title&lt;/h2&gt;
+    &lt;slot&gt;
+      如果没有分发内容则显示我。
+    &lt;/slot&gt;
+&lt;/div&gt;
+</code></pre><p>父组件：</p>
+<pre><code>&lt;div&gt;
+    &lt;h1&gt;I&apos;m the parent title&lt;/h1&gt;
+    &lt;my-component&gt;
+      &lt;p&gt;This is some original content&lt;/p&gt;
+      &lt;p&gt;This is some more original content&lt;/p&gt;
+    &lt;/my-component&gt;
+&lt;/div&gt;
+</code></pre><p>渲染结果：</p>
+<pre><code>&lt;div&gt;
+    &lt;h1&gt;I&apos;m the parent title&lt;/h1&gt;
+    &lt;div&gt;
+      &lt;h2&gt;I&apos;m the child title&lt;/h2&gt;
+      &lt;p&gt;This is some original content&lt;/p&gt;
+      &lt;p&gt;This is some more original content&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><blockquote>
+<p>具名Slots</p>
+</blockquote>
+<p>就是带有name的slot,根据name,对应替换slot。可以有一个匿名 slot ，它是默认 slot ，作为找不到匹配的内容片段的备用插槽。没有备用插槽内容则被抛弃。</p>
+<p>组件<code>&lt;app-layout&gt;</code>:</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;header&gt;
+      &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre><p>父组件模版：</p>
+<pre><code>&lt;app-layout&gt;
+    &lt;h1 slot=&quot;header&quot;&gt;Here might be a page title&lt;/h1&gt;
+    &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+    &lt;p&gt;And another one.&lt;/p&gt;
+    &lt;p slot=&quot;footer&quot;&gt;Here&apos;s some contact info&lt;/p&gt;
+&lt;/app-layout&gt;
+</code></pre><p>渲染结果：</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+      &lt;p&gt;And another one.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;Here&apos;s some contact info&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[redux实践]]></title>
       <url>http://xf2e.github.io/2016/11/23/redux_practice/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -288,15 +689,29 @@
     </entry>
     
     <entry>
-      <title><![CDATA[设计模式之中介者模式]]></title>
-      <url>http://xf2e.github.io/2016/09/18/designPAatterns_mediator/</url>
-      <content type="html"><![CDATA[<h2 id="中介者模式概念"><a href="#中介者模式概念" class="headerlink" title="中介者模式概念"></a>中介者模式概念</h2><blockquote>
-<p>中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br><a id="more"></a><br>中介者是一个行为设计模式，通过提供一个统一的接口让系统的不同部分进行通信。一般，如果系统有很多子模块需要直接沟通，都要创建一个中央控制点让其各模块通过该中央控制点进行交互。中介者模式可以让这些子模块不需要直接沟通，而达到进行解耦的目的。</p>
-<p>打个比方，平时常见的机场交通控制系统，塔台就是中介者，它控制着飞机（子模块）的起飞和降落，因为所有的沟通都是从飞机向塔台汇报来完成的，而不是飞机之前相互沟通。中央控制系统就是该系统的关键，也就是软件设计中扮演的中介者角色。</p>
-<h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">   function Airplane(name)&#123;</div><div class="line">    if (!(this instanceof Airplane )) &#123;</div><div class="line">        return new Airplane(name);</div><div class="line">    &#125;</div><div class="line">        this.name=name;</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.send=function(msg,to)&#123;</div><div class="line">        tower.send(msg,to);</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.receive=function(msg)&#123;</div><div class="line">        console.log(this.name+&quot;【接收到】&quot;+msg);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var tower=&#123;</div><div class="line">        all:&#123;&#125;,</div><div class="line">        init:function (airplane) &#123;</div><div class="line">            this.all[airplane.name]=airplane;</div><div class="line">        &#125;,</div><div class="line">        send:function (msg,to) &#123;</div><div class="line">            this.all[to.name].receive(msg);</div><div class="line">        &#125;</div><div class="line">  &#125;;</div><div class="line">var airplane1=new Airplane(&quot;airplane1&quot;),</div><div class="line">    airplane2=new Airplane(&quot;airplane2&quot;);</div><div class="line">tower.signIn(airplane1);</div><div class="line">tower.signIn(airplane2);</div><div class="line">airplane1.send(&quot;我还有二百米就要降落了&quot;,airplane2);</div></pre></td></tr></table></figure>
-<p><em>中介者模式一般应用于一组对象已定义良好但是以复杂的方式进行通信的场合，一般情况下，中介者模式很容易在系统中使用，但也容易在系统里误用，当系统出现了多对多交互复杂的对象群时，先不要急于使用中介者模式，而是要思考一下是不是系统设计有问题。</em></p>
-<p><em>另外，由于中介者模式把交互复杂性变成了中介者本身的复杂性，所以说中介者对象会比其它任何对象都复杂</em></p>
+      <title><![CDATA[设计模式之单例模式]]></title>
+      <url>http://xf2e.github.io/2016/09/18/designPatterns_singleton/</url>
+      <content type="html"><![CDATA[<h2 id="单例模式概念"><a href="#单例模式概念" class="headerlink" title="单例模式概念"></a>单例模式概念</h2><p>单例模式，在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。<br><a id="more"></a><br>在JavaScript里，实现单例的方式有很多种，其中最简单的一个方式是使用对象字面量的方法，其字面量里可以包含大量的属性和方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var girl = &#123;</div><div class="line">    name:&apos;郝阿由&apos;,//小孩的姓名</div><div class="line">    weight:&apos;7斤八两&apos;, //小孩的体重</div><div class="line">    create:function () &#123;</div><div class="line">        return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>如果以后要扩展该对象，你可以添加自己的私有成员和方法，然后使用闭包在其内部封装这些变量和函数声明。只暴露你想暴露的public成员和方法，并且在使用的时候才初始化,为了节约资源的目的，我们可以另外一个构造函数里来初始化这些代码，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var Babytest=(function () &#123;</div><div class="line">    // body...</div><div class="line"></div><div class="line"></div><div class="line">    function Baby(data)&#123;</div><div class="line">        if(!(this instanceof Baby))&#123;</div><div class="line">            return new Baby(data);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        this.name=data.name||&apos;郝阿由&apos;; //小孩的姓名</div><div class="line">        this.weight=data.weight||&apos;7斤八两&apos;; //小孩的体重</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    Baby.prototype.create= function () &#123;</div><div class="line">        return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">     //实例容器</div><div class="line">    var instance;</div><div class="line"></div><div class="line">    var _static = &#123;</div><div class="line">        name: &apos;Babytest&apos;,</div><div class="line"></div><div class="line">        //获取实例的方法</div><div class="line">        //返回Baby的实例</div><div class="line">        getInstance: function (args) &#123;</div><div class="line">            if (instance === undefined) &#123;</div><div class="line">                instance = new Baby(args);</div><div class="line">            &#125;</div><div class="line">            return instance;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    return _static;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">var baby=Babytest.getInstance(&#123;name:&quot;郝美丽&quot;&#125;);</div><div class="line">console.log( baby.create());</div></pre></td></tr></table></figure>
+<p><em>单例一般是用在系统间各种模式的通信协调上</em></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[设计模式之原型模式]]></title>
+      <url>http://xf2e.github.io/2016/09/18/designPatterns_prototype/</url>
+      <content type="html"><![CDATA[<h2 id="原型模式概念"><a href="#原型模式概念" class="headerlink" title="原型模式概念"></a>原型模式概念</h2><img src="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png" class="full-image" alt="alt" title="title">
+<blockquote>
+<p>原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。<br><a id="more"></a><br>原型模式多用于创建复杂的或者耗时的实例，因为这种情况下，复制一个已经存在的实例使程序运行更高效；或者创建值相等，只是命名不一样的同类数据。</p>
+<p>真正的原型继承是作为最新版的ECMAScript5标准提出的，使用Object.create方法来创建这样的对象，该方法创建指定的对象，其对象的prototype有指定的对象（也就是该方法传进的第一个参数对象），也可以包含其他可选的指定属性。例如Object.create(prototype, optionalDescriptorObjects)</p>
+</blockquote>
+<h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// 因为不是构造函数，所以不用大写</div><div class="line">var girl = &#123;</div><div class="line">    name:&apos;郝阿由&apos;,//小孩的姓名</div><div class="line">    weight:&apos;7斤八两&apos; //小孩的体重</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 使用Object.create创建一个女孩</div><div class="line">var bady = Object.create(girl);</div><div class="line">bady.name = &apos;郝美丽&apos;;</div><div class="line">Object.create运行你直接从其它对象继承过来，使用该方法的第二个参数，你可以初始化额外的其它属性。例如：</div><div class="line"></div><div class="line">var girl = &#123;</div><div class="line">    create: function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var bady = Object.create(girl, &#123;</div><div class="line">    &apos;name&apos;: &#123;</div><div class="line">        value:&quot;郝美丽&quot;,</div><div class="line">        enumerable: true // 默认writable:false, configurable:false</div><div class="line"> &#125;,</div><div class="line">    &apos;weight&apos;: &#123;</div><div class="line">        value: &apos;7斤八两&apos;,</div><div class="line">        enumerable: true</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><em>这里，可以在Object.create的第二个参数里使用对象字面量传入要初始化的额外属性，其语法与Object.defineProperties或Object.defineProperty方法类型。它允许您设定属性的特性，例如enumerable, writable 或 configurable。</em></p>
+<ul>
+<li>如果你希望自己去实现原型模式，而不直接使用Object.create 。结合构造函数模式，把上面的代码重新实现：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function Baby(data)&#123;</div><div class="line">    if(!(this instanceof Baby))&#123;</div><div class="line">        return new Baby(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    this.name=data.name||&apos;郝阿由&apos;; //小孩的姓名</div><div class="line">    this.weight=data.weight||&apos;7斤八两&apos;; //小孩的体重</div><div class="line"></div><div class="line">&#125;</div><div class="line">Baby.prototype.create= function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var baby=new Baby(&#123;&#125;);</div><div class="line">console.log( baby.create());</div></pre></td></tr></table></figure>
 ]]></content>
     </entry>
     
@@ -330,29 +745,15 @@
     </entry>
     
     <entry>
-      <title><![CDATA[设计模式之原型模式]]></title>
-      <url>http://xf2e.github.io/2016/09/18/designPatterns_prototype/</url>
-      <content type="html"><![CDATA[<h2 id="原型模式概念"><a href="#原型模式概念" class="headerlink" title="原型模式概念"></a>原型模式概念</h2><img src="http://odn6bfovg.bkt.clouddn.com/1200px-Prototype_UML.svg.png" class="full-image" alt="alt" title="title">
-<blockquote>
-<p>原型模式（prototype）是创建型模式的一种,其特点在于通过「复制」一个已经存在的实例来返回新的实例,而不是新建实例。被复制的实例就是我们所称的「原型」，这个原型是可定制的。<br><a id="more"></a><br>原型模式多用于创建复杂的或者耗时的实例，因为这种情况下，复制一个已经存在的实例使程序运行更高效；或者创建值相等，只是命名不一样的同类数据。</p>
-<p>真正的原型继承是作为最新版的ECMAScript5标准提出的，使用Object.create方法来创建这样的对象，该方法创建指定的对象，其对象的prototype有指定的对象（也就是该方法传进的第一个参数对象），也可以包含其他可选的指定属性。例如Object.create(prototype, optionalDescriptorObjects)</p>
-</blockquote>
-<h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// 因为不是构造函数，所以不用大写</div><div class="line">var girl = &#123;</div><div class="line">    name:&apos;郝阿由&apos;,//小孩的姓名</div><div class="line">    weight:&apos;7斤八两&apos; //小孩的体重</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 使用Object.create创建一个女孩</div><div class="line">var bady = Object.create(girl);</div><div class="line">bady.name = &apos;郝美丽&apos;;</div><div class="line">Object.create运行你直接从其它对象继承过来，使用该方法的第二个参数，你可以初始化额外的其它属性。例如：</div><div class="line"></div><div class="line">var girl = &#123;</div><div class="line">    create: function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var bady = Object.create(girl, &#123;</div><div class="line">    &apos;name&apos;: &#123;</div><div class="line">        value:&quot;郝美丽&quot;,</div><div class="line">        enumerable: true // 默认writable:false, configurable:false</div><div class="line"> &#125;,</div><div class="line">    &apos;weight&apos;: &#123;</div><div class="line">        value: &apos;7斤八两&apos;,</div><div class="line">        enumerable: true</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p><em>这里，可以在Object.create的第二个参数里使用对象字面量传入要初始化的额外属性，其语法与Object.defineProperties或Object.defineProperty方法类型。它允许您设定属性的特性，例如enumerable, writable 或 configurable。</em></p>
-<ul>
-<li>如果你希望自己去实现原型模式，而不直接使用Object.create 。结合构造函数模式，把上面的代码重新实现：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">function Baby(data)&#123;</div><div class="line">    if(!(this instanceof Baby))&#123;</div><div class="line">        return new Baby(data);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    this.name=data.name||&apos;郝阿由&apos;; //小孩的姓名</div><div class="line">    this.weight=data.weight||&apos;7斤八两&apos;; //小孩的体重</div><div class="line"></div><div class="line">&#125;</div><div class="line">Baby.prototype.create= function () &#123;</div><div class="line">    return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">var baby=new Baby(&#123;&#125;);</div><div class="line">console.log( baby.create());</div></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[设计模式之单例模式]]></title>
-      <url>http://xf2e.github.io/2016/09/18/designPatterns_singleton/</url>
-      <content type="html"><![CDATA[<h2 id="单例模式概念"><a href="#单例模式概念" class="headerlink" title="单例模式概念"></a>单例模式概念</h2><p>单例模式，在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。<br><a id="more"></a><br>在JavaScript里，实现单例的方式有很多种，其中最简单的一个方式是使用对象字面量的方法，其字面量里可以包含大量的属性和方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var girl = &#123;</div><div class="line">    name:&apos;郝阿由&apos;,//小孩的姓名</div><div class="line">    weight:&apos;7斤八两&apos;, //小孩的体重</div><div class="line">    create:function () &#123;</div><div class="line">        return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>如果以后要扩展该对象，你可以添加自己的私有成员和方法，然后使用闭包在其内部封装这些变量和函数声明。只暴露你想暴露的public成员和方法，并且在使用的时候才初始化,为了节约资源的目的，我们可以另外一个构造函数里来初始化这些代码，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">var Babytest=(function () &#123;</div><div class="line">    // body...</div><div class="line"></div><div class="line"></div><div class="line">    function Baby(data)&#123;</div><div class="line">        if(!(this instanceof Baby))&#123;</div><div class="line">            return new Baby(data);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        this.name=data.name||&apos;郝阿由&apos;; //小孩的姓名</div><div class="line">        this.weight=data.weight||&apos;7斤八两&apos;; //小孩的体重</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    Baby.prototype.create= function () &#123;</div><div class="line">        return &quot;小孩的名字是&quot;+this.name+&quot;小孩的体重是&quot;+this.weight;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">     //实例容器</div><div class="line">    var instance;</div><div class="line"></div><div class="line">    var _static = &#123;</div><div class="line">        name: &apos;Babytest&apos;,</div><div class="line"></div><div class="line">        //获取实例的方法</div><div class="line">        //返回Baby的实例</div><div class="line">        getInstance: function (args) &#123;</div><div class="line">            if (instance === undefined) &#123;</div><div class="line">                instance = new Baby(args);</div><div class="line">            &#125;</div><div class="line">            return instance;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">    return _static;</div><div class="line">&#125;)();</div><div class="line"></div><div class="line">var baby=Babytest.getInstance(&#123;name:&quot;郝美丽&quot;&#125;);</div><div class="line">console.log( baby.create());</div></pre></td></tr></table></figure>
-<p><em>单例一般是用在系统间各种模式的通信协调上</em></p>
+      <title><![CDATA[设计模式之中介者模式]]></title>
+      <url>http://xf2e.github.io/2016/09/18/designPAatterns_mediator/</url>
+      <content type="html"><![CDATA[<h2 id="中介者模式概念"><a href="#中介者模式概念" class="headerlink" title="中介者模式概念"></a>中介者模式概念</h2><blockquote>
+<p>中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br><a id="more"></a><br>中介者是一个行为设计模式，通过提供一个统一的接口让系统的不同部分进行通信。一般，如果系统有很多子模块需要直接沟通，都要创建一个中央控制点让其各模块通过该中央控制点进行交互。中介者模式可以让这些子模块不需要直接沟通，而达到进行解耦的目的。</p>
+<p>打个比方，平时常见的机场交通控制系统，塔台就是中介者，它控制着飞机（子模块）的起飞和降落，因为所有的沟通都是从飞机向塔台汇报来完成的，而不是飞机之前相互沟通。中央控制系统就是该系统的关键，也就是软件设计中扮演的中介者角色。</p>
+<h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3></blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">   function Airplane(name)&#123;</div><div class="line">    if (!(this instanceof Airplane )) &#123;</div><div class="line">        return new Airplane(name);</div><div class="line">    &#125;</div><div class="line">        this.name=name;</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.send=function(msg,to)&#123;</div><div class="line">        tower.send(msg,to);</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.receive=function(msg)&#123;</div><div class="line">        console.log(this.name+&quot;【接收到】&quot;+msg);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var tower=&#123;</div><div class="line">        all:&#123;&#125;,</div><div class="line">        init:function (airplane) &#123;</div><div class="line">            this.all[airplane.name]=airplane;</div><div class="line">        &#125;,</div><div class="line">        send:function (msg,to) &#123;</div><div class="line">            this.all[to.name].receive(msg);</div><div class="line">        &#125;</div><div class="line">  &#125;;</div><div class="line">var airplane1=new Airplane(&quot;airplane1&quot;),</div><div class="line">    airplane2=new Airplane(&quot;airplane2&quot;);</div><div class="line">tower.signIn(airplane1);</div><div class="line">tower.signIn(airplane2);</div><div class="line">airplane1.send(&quot;我还有二百米就要降落了&quot;,airplane2);</div></pre></td></tr></table></figure>
+<p><em>中介者模式一般应用于一组对象已定义良好但是以复杂的方式进行通信的场合，一般情况下，中介者模式很容易在系统中使用，但也容易在系统里误用，当系统出现了多对多交互复杂的对象群时，先不要急于使用中介者模式，而是要思考一下是不是系统设计有问题。</em></p>
+<p><em>另外，由于中介者模式把交互复杂性变成了中介者本身的复杂性，所以说中介者对象会比其它任何对象都复杂</em></p>
 ]]></content>
     </entry>
     

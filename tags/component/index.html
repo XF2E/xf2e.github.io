@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="设计模式," />
+  <meta name="keywords" content="小车匠,前端,团队,javascript,node,angular,react" />
 
 
 
@@ -84,19 +84,15 @@
 
 
 
-<meta name="description" content="中介者模式概念
-中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之中介者模式">
-<meta property="og:url" content="http://xf2e.github.io/2016/09/18/designPAatterns_mediator/index.html">
+<meta name="description" content="just do it">
+<meta property="og:type" content="website">
+<meta property="og:title" content="XF2E">
+<meta property="og:url" content="http://xf2e.github.io/tags/component/index.html">
 <meta property="og:site_name" content="XF2E">
-<meta property="og:description" content="中介者模式概念
-中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。">
-<meta property="og:updated_time" content="2016-10-10T03:51:02.000Z">
+<meta property="og:description" content="just do it">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之中介者模式">
-<meta name="twitter:description" content="中介者模式概念
-中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。">
+<meta name="twitter:title" content="XF2E">
+<meta name="twitter:description" content="just do it">
 
 
 
@@ -117,10 +113,10 @@
 
 
 
-  <link rel="canonical" href="http://xf2e.github.io/2016/09/18/designPAatterns_mediator/"/>
+  <link rel="canonical" href="http://xf2e.github.io/tags/component/"/>
 
 
-  <title> 设计模式之中介者模式 | XF2E </title>
+  <title> 标签: component | XF2E </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -151,7 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -279,163 +275,46 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                设计模式之中介者模式
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-18T20:13:08+08:00" content="2016-09-18">
-              2016-09-18
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/18/designPAatterns_mediator/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/18/designPAatterns_mediator/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/09/18/designPAatterns_mediator/" class="leancloud_visitors" data-flag-title="设计模式之中介者模式">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="中介者模式概念"><a href="#中介者模式概念" class="headerlink" title="中介者模式概念"></a>中介者模式概念</h2><blockquote>
-<p>中介者模式（Mediator），用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。<br><a id="more"></a><br>中介者是一个行为设计模式，通过提供一个统一的接口让系统的不同部分进行通信。一般，如果系统有很多子模块需要直接沟通，都要创建一个中央控制点让其各模块通过该中央控制点进行交互。中介者模式可以让这些子模块不需要直接沟通，而达到进行解耦的目的。</p>
-<p>打个比方，平时常见的机场交通控制系统，塔台就是中介者，它控制着飞机（子模块）的起飞和降落，因为所有的沟通都是从飞机向塔台汇报来完成的，而不是飞机之前相互沟通。中央控制系统就是该系统的关键，也就是软件设计中扮演的中介者角色。</p>
-<h3 id="Show-code"><a href="#Show-code" class="headerlink" title="Show code"></a>Show code</h3></blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">   function Airplane(name)&#123;</div><div class="line">    if (!(this instanceof Airplane )) &#123;</div><div class="line">        return new Airplane(name);</div><div class="line">    &#125;</div><div class="line">        this.name=name;</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.send=function(msg,to)&#123;</div><div class="line">        tower.send(msg,to);</div><div class="line">  &#125;;</div><div class="line">  Airplane.prototype.receive=function(msg)&#123;</div><div class="line">        console.log(this.name+&quot;【接收到】&quot;+msg);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  var tower=&#123;</div><div class="line">        all:&#123;&#125;,</div><div class="line">        init:function (airplane) &#123;</div><div class="line">            this.all[airplane.name]=airplane;</div><div class="line">        &#125;,</div><div class="line">        send:function (msg,to) &#123;</div><div class="line">            this.all[to.name].receive(msg);</div><div class="line">        &#125;</div><div class="line">  &#125;;</div><div class="line">var airplane1=new Airplane(&quot;airplane1&quot;),</div><div class="line">    airplane2=new Airplane(&quot;airplane2&quot;);</div><div class="line">tower.signIn(airplane1);</div><div class="line">tower.signIn(airplane2);</div><div class="line">airplane1.send(&quot;我还有二百米就要降落了&quot;,airplane2);</div></pre></td></tr></table></figure>
-<p><em>中介者模式一般应用于一组对象已定义良好但是以复杂的方式进行通信的场合，一般情况下，中介者模式很容易在系统中使用，但也容易在系统里误用，当系统出现了多对多交互复杂的对象群时，先不要急于使用中介者模式，而是要思考一下是不是系统设计有问题。</em></p>
-<p><em>另外，由于中介者模式把交互复杂性变成了中介者本身的复杂性，所以说中介者对象会比其它任何对象都复杂</em></p>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        component
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="//schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/2016/11/24/vue_component/" itemprop="url">
+              
+                <span itemprop="name">搭建一个webpack + vue项目</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-11-24T00:00:00+08:00"
+              content="2016-11-24" >
+          11-24
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/18/designPatterns_constructed/" rel="prev" title="设计模式之构造函数模式">
-                设计模式之构造函数模式 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
+    
   </div>
+
+  
 
 
           </div>
@@ -443,14 +322,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/09/18/designPAatterns_mediator/"
-           data-title="设计模式之中介者模式" data-url="http://xf2e.github.io/2016/09/18/designPAatterns_mediator/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -470,17 +341,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/logo.png"
@@ -530,17 +392,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#中介者模式概念"><span class="nav-number">1.</span> <span class="nav-text">中介者模式概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Show-code"><span class="nav-number">1.1.</span> <span class="nav-text">Show code</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -637,10 +488,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
 
   
 
