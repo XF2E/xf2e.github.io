@@ -4,6 +4,282 @@
   
     
     <entry>
+      <title><![CDATA[codelyzer的部分使用规则粗解]]></title>
+      <url>http://xf2e.github.io/2016/12/22/codelyzer_rules/</url>
+      <content type="html"><![CDATA[<h2 id="codelyzer-特性"><a href="#codelyzer-特性" class="headerlink" title="codelyzer 特性"></a>codelyzer 特性</h2><blockquote>
+<p><em>这些规则找到与angular2特性相关的错误</em></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">directive-selector -指令的命名规则</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">component-selector -组件的命名规则</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use-life-cycle-interface -生命周期接口是否需要被实现</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">use-pipe-transform-interface -过滤转化接口是否需要被实现</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pipe-naming -过滤（管道）的命名规则</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">component-class-suffix -组件class名称必须带component后缀</div><div class="line">```</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">directive-class-suffix -指令class名称必须带component后缀</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">templates-use-public -html模版只能用公共成员</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-access-missing-member -不接受不存在的成员</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-unused-css -一些没有用到的css样式</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tslint的部分使用规则粗解]]></title>
+      <url>http://xf2e.github.io/2016/12/21/tslint_rules/</url>
+      <content type="html"><![CDATA[<h2 id="TypeScript-特性"><a href="#TypeScript-特性" class="headerlink" title="TypeScript 特性"></a>TypeScript 特性</h2><blockquote>
+<p><em>这些规则找到与TypeScript特性相关的错误</em></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">member-ordering -强制执行成员排序。[object]</div></pre></td></tr></table></figure>
+<p><em>类成员的一致排序可以使类更容易阅读，导航和编辑。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-internal-module -内部组合不允许module</div></pre></td></tr></table></figure>
+<p><em>使用module导致与外部模块概念混淆。使用新的namespace关键字。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prefer-for-of -如果索引仅用于访问要迭代的数组，则建议在标准“for”循环中使用“for-of”循环。</div></pre></td></tr></table></figure>
+<p><em>当不需要索引时，for（… of …）循环更容易实现和读取。</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef-whitespace -需要或不允许空白的类型定义。</div></pre></td></tr></table></figure>
+<p><em>两个参数都是对象,每个键应该具有的值”space”或”nospace”。</em></p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><blockquote>
+<p><em>这些规则捕获JS编程中的常见错误或其他容易产生错误的混淆结构：</em></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forin -需要for ... in用一个过滤语句if声明。</div></pre></td></tr></table></figure>
+<p><em>防止从对象的原型继承的属性的意外获取</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-arg -禁止使用的arguments.callee。</div></pre></td></tr></table></figure>
+<p><em>使用arguments.callee使得各种性能不容易优化</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-bitwise -不允许按位运算符。</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-conditional-assignment -在条件语句中不允许任何类型的赋值</div></pre></td></tr></table></figure>
+<p><em>使用arguments.callee使得各种性能不容易优化</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-console -禁止使用指定的console方法。</div></pre></td></tr></table></figure>
+<p><em>console方法是不适合于生产代码</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-construct -不允许访问的构造函数String，Number和Boolean。</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-debugger -不允许debugger声明。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-duplicate-variable -不允许重复变量声明在同一区块范围。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-eval -不允许eval函数调用。</div></pre></td></tr></table></figure>
+<p><em>它可以执行传给它的任何字符串</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-shadowed-variable -不允许隐藏变量声明。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-switch-case-fall-through -不允许直接通过case语句。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-unused-expression -禁止未使用的表达式语句。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-use-before-declare -它们的声明之前不容许变量使用。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-var-keyword -将不允许的使用var关键字。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">radix -使用parseInt要指定的radix参数parseInt。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">switch-default -需要一个default在所有情况下的switch语句。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">triple-equals -要求===和!==替换==和!=。</div></pre></td></tr></table></figure>
+<h2 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h2><p>这些规则使代码维护更容易：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eofline -确保以新的一行作为文件结尾。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">indent -强制执行与制表符或空格缩进。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">max-line-length -需要线得到一定最大长度下。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-trailing-whitespace -不允许在一行的末尾尾随空白。</div></pre></td></tr></table></figure>
+<p><em>保持版本控制差异清洁，因为它防止意外的空白被提交</em></p>
+<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>这些规则在整个代码库中实施一致的风格：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class-name -强制执行PascalCased类和接口的名称。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comment-format -强制执行单行注释格式规则。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jsdoc格式 -强制执行JSDoc评论的基本格式规则。</div></pre></td></tr></table></figure>
+<blockquote>
+<p>每行包含一个星号和星号必须对齐<br>每个星号后面必须有空格或换行符（除了第一个和最后一个）<br>每行上的星号之前的唯一字符必须是空格字符<br>一行注释必须以/** 和开头<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new-parens -通过调用构造函数时需要括号new关键字。</div></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">one-line -需要指定的标记与它们之前的表达式在同一行。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotemark -需要字符串文字单或双引号。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">semicolon -在每个语句结尾实施一致的分号的使用。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">variable-name -检查各种错误的变量名。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whitespace -强制执行空白样式约定。</div></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[angular2 官网解读]]></title>
+      <url>http://xf2e.github.io/2016/12/12/angular2-start/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[vue组件]]></title>
+      <url>http://xf2e.github.io/2016/11/24/vue_component/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>以下分享来自团队童鞋<a href="https://github.com/Peggy3399" target="_blank" rel="external">Peggy</a></p>
+</blockquote>
+<ul>
+<li>npm install -g vue-cli  ==&gt;快速生成项目模版的工具</li>
+<li>vue init webpack my-project ==&gt;基于webpack的项目</li>
+<li>cd my-project</li>
+<li>npm install 安装需要的依赖<a id="more"></a>
+</li>
+</ul>
+<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>Vue的组件化功能可谓是它的一大亮点，通过将页面上某一组件的html、CSS、js代码放入一个.vue的文件中进行管理可以大大提高代码的维护性。<br>目前直接使用ES6的模块化功能，再结合Webpack进行相应打包是最热门的方案。</p>
+<blockquote>
+<p>基本写法：</p>
+</blockquote>
+<pre><code>// App.vue
+&lt;template&gt;
+    &lt;div class=&quot;box&quot; v-text=&quot;note&quot;&gt;&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    data () {
+        return {
+            note: &apos;这是一个组件的html模板！&apos;
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+.box {
+    color: #000;
+}
+&lt;/style&gt;
+</code></pre><p><a href="https://vuefe.cn/guide/components.html" target="_blank" rel="external">组件</a></p>
+<blockquote>
+<p> data 必须是函数。</p>
+<p>全局注册</p>
+</blockquote>
+<p>注册全剧组件可以用 Vue.component(tag, constructor) 。</p>
+<pre><code>例如： Vue.component(&apos;my-component&apos;, {
+          // 选项
+        })
+</code></pre><p>组件在注册之后，才可以在父实例的模块中以自定义元素 <code>&lt;my-component&gt;</code> 的形式使用(组件名最好使用小写，并且包含一个短杠)。</p>
+<pre><code>&lt;div id=&quot;example&quot;&gt;
+  &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+// 注册
+Vue.component(&apos;my-component&apos;, {
+  template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
+})
+// 创建根实例
+new Vue({
+  el: &apos;#example&apos;
+})
+</code></pre><blockquote>
+<p>局部注册</p>
+</blockquote>
+<p>  用实例选项 components 注册局部组件。局部注册只能在对应的Vue实例下使用，所以它不能在其它Vue实例下使用。</p>
+<pre><code>例如：var Child = {
+        template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
+      }
+      new Vue({
+        // ...
+        components: {
+          // &lt;my-component&gt; 将只在父模板可用
+          &apos;my-component&apos;: Child
+        }
+      })
+</code></pre><h2 id="传递信息"><a href="#传递信息" class="headerlink" title="传递信息"></a>传递信息</h2><p>在 Vue.js 中，父子组件的关系可以总结为 props down, events up 。父组件通过 props 向下传递数据给子组件，子组件通过 events 给父组件发送消息。</p>
+<blockquote>
+<p>Props</p>
+</blockquote>
+<p>组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。</p>
+<pre><code>Vue.component(&apos;child&apos;, {
+  // 声明 props
+  props: [&apos;message&apos;],
+  // 就像 data 一样，prop 可以用在模板内
+  // 同样也可以在 vm 实例中像 “this.message” 这样使用
+  template: &apos;&lt;span&gt;{{ message }}&lt;/span&gt;&apos;
+})
+</code></pre><p>props也可以用 v-bind 绑定动态 props 到父组件的数据。每当父组件的数据变化时，也会传导给子组件。</p>
+<pre><code>&lt;div&gt;
+  &lt;input v-model=&quot;parentMsg&quot;&gt;
+  &lt;br&gt;
+  &lt;child :my-message=&quot;parentMsg&quot;&gt;&lt;/child&gt;
+&lt;/div&gt;
+</code></pre><p>(2)如果要子组件把数据传递给父组件，就需要自定义事件。</p>
+<p><a href="https://vuefe.cn/guide/components.html#自定义事件" target="_blank" rel="external">自定义事件</a></p>
+<h2 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h2><p>如果想要动态切换不同的组件，就需要使用动态组件，动态地绑定到它的 is 特性。</p>
+<pre><code>var vm = new Vue({
+  el: &apos;#example&apos;,
+  data: {
+    currentView: &apos;home&apos;
+  },
+  components: {
+    home: { /* ... */ },
+    posts: { /* ... */ },
+    archive: { /* ... */ }
+  }
+})
+
+&lt;component v-bind:is=&quot;currentView&quot;&gt;
+  &lt;!-- 组件在 vm.currentview 变化时改变！ --&gt;
+&lt;/component&gt;
+</code></pre><p>如果把切换出去的组件想要保留它的状态或避免重新渲染，添加keep-alive指令参数，非活动组件将被缓存。</p>
+<pre><code>&lt;keep-alive&gt;
+  &lt;component :is=&quot;currentView&quot;&gt;
+    &lt;!-- 非活动组件将被缓存！ --&gt;
+  &lt;/component&gt;
+&lt;/keep-alive&gt;
+</code></pre><p>##Slots分发内容</p>
+<p>一种方式用来混合父组件的内容与子组件自己的模板。比如说：</p>
+<pre><code>&lt;app&gt;
+  &lt;app-header&gt;&lt;/app-header&gt;
+  &lt;app-footer&gt;&lt;/app-footer&gt;
+&lt;/app&gt;
+</code></pre><p>app也有自己的模板内容，这时候就需要用到slots。</p>
+<blockquote>
+<p>编辑作用域</p>
+</blockquote>
+<p>父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译。</p>
+<p>分发内容就是在父组件作用域内编译。</p>
+<blockquote>
+<p>单个Slot</p>
+</blockquote>
+<p>子组件模板只有一个没有属性的 slot 时，父组件整个内容片段将插入到 slot 所在的 DOM 位置，并替换掉 slot 标签本身。</p>
+<p>子组件<code>&lt;my-component&gt;</code>：</p>
+<pre><code>&lt;div&gt;
+    &lt;h2&gt;I&apos;m the child title&lt;/h2&gt;
+    &lt;slot&gt;
+      如果没有分发内容则显示我。
+    &lt;/slot&gt;
+&lt;/div&gt;
+</code></pre><p>父组件：</p>
+<pre><code>&lt;div&gt;
+    &lt;h1&gt;I&apos;m the parent title&lt;/h1&gt;
+    &lt;my-component&gt;
+      &lt;p&gt;This is some original content&lt;/p&gt;
+      &lt;p&gt;This is some more original content&lt;/p&gt;
+    &lt;/my-component&gt;
+&lt;/div&gt;
+</code></pre><p>渲染结果：</p>
+<pre><code>&lt;div&gt;
+    &lt;h1&gt;I&apos;m the parent title&lt;/h1&gt;
+    &lt;div&gt;
+      &lt;h2&gt;I&apos;m the child title&lt;/h2&gt;
+      &lt;p&gt;This is some original content&lt;/p&gt;
+      &lt;p&gt;This is some more original content&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><blockquote>
+<p>具名Slots</p>
+</blockquote>
+<p>就是带有name的slot,根据name,对应替换slot。可以有一个匿名 slot ，它是默认 slot ，作为找不到匹配的内容片段的备用插槽。没有备用插槽内容则被抛弃。</p>
+<p>组件<code>&lt;app-layout&gt;</code>:</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;header&gt;
+      &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;slot&gt;&lt;/slot&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre><p>父组件模版：</p>
+<pre><code>&lt;app-layout&gt;
+    &lt;h1 slot=&quot;header&quot;&gt;Here might be a page title&lt;/h1&gt;
+    &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+    &lt;p&gt;And another one.&lt;/p&gt;
+    &lt;p slot=&quot;footer&quot;&gt;Here&apos;s some contact info&lt;/p&gt;
+&lt;/app-layout&gt;
+</code></pre><p>渲染结果：</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Here might be a page title&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
+      &lt;p&gt;And another one.&lt;/p&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;p&gt;Here&apos;s some contact info&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[vue路由]]></title>
       <url>http://xf2e.github.io/2016/11/24/vue_router1/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -209,199 +485,6 @@ const router = new VueRouter({
     </entry>
     
     <entry>
-      <title><![CDATA[vue组件]]></title>
-      <url>http://xf2e.github.io/2016/11/24/vue_component/</url>
-      <content type="html"><![CDATA[<blockquote>
-<p>以下分享来自团队童鞋<a href="https://github.com/Peggy3399" target="_blank" rel="external">Peggy</a></p>
-</blockquote>
-<ul>
-<li>npm install -g vue-cli  ==&gt;快速生成项目模版的工具</li>
-<li>vue init webpack my-project ==&gt;基于webpack的项目</li>
-<li>cd my-project</li>
-<li>npm install 安装需要的依赖<a id="more"></a>
-</li>
-</ul>
-<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2><p>Vue的组件化功能可谓是它的一大亮点，通过将页面上某一组件的html、CSS、js代码放入一个.vue的文件中进行管理可以大大提高代码的维护性。<br>目前直接使用ES6的模块化功能，再结合Webpack进行相应打包是最热门的方案。</p>
-<blockquote>
-<p>基本写法：</p>
-</blockquote>
-<pre><code>// App.vue
-&lt;template&gt;
-    &lt;div class=&quot;box&quot; v-text=&quot;note&quot;&gt;&lt;/div&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default {
-    data () {
-        return {
-            note: &apos;这是一个组件的html模板！&apos;
-        }
-    }
-}
-&lt;/script&gt;
-
-&lt;style&gt;
-.box {
-    color: #000;
-}
-&lt;/style&gt;
-</code></pre><p><a href="https://vuefe.cn/guide/components.html" target="_blank" rel="external">组件</a></p>
-<blockquote>
-<p> data 必须是函数。</p>
-<p>全局注册</p>
-</blockquote>
-<p>注册全剧组件可以用 Vue.component(tag, constructor) 。</p>
-<pre><code>例如： Vue.component(&apos;my-component&apos;, {
-          // 选项
-        })
-</code></pre><p>组件在注册之后，才可以在父实例的模块中以自定义元素 <code>&lt;my-component&gt;</code> 的形式使用(组件名最好使用小写，并且包含一个短杠)。</p>
-<pre><code>&lt;div id=&quot;example&quot;&gt;
-  &lt;my-component&gt;&lt;/my-component&gt;
-&lt;/div&gt;
-// 注册
-Vue.component(&apos;my-component&apos;, {
-  template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
-})
-// 创建根实例
-new Vue({
-  el: &apos;#example&apos;
-})
-</code></pre><blockquote>
-<p>局部注册</p>
-</blockquote>
-<p>  用实例选项 components 注册局部组件。局部注册只能在对应的Vue实例下使用，所以它不能在其它Vue实例下使用。</p>
-<pre><code>例如：var Child = {
-        template: &apos;&lt;div&gt;A custom component!&lt;/div&gt;&apos;
-      }
-      new Vue({
-        // ...
-        components: {
-          // &lt;my-component&gt; 将只在父模板可用
-          &apos;my-component&apos;: Child
-        }
-      })
-</code></pre><h2 id="传递信息"><a href="#传递信息" class="headerlink" title="传递信息"></a>传递信息</h2><p>在 Vue.js 中，父子组件的关系可以总结为 props down, events up 。父组件通过 props 向下传递数据给子组件，子组件通过 events 给父组件发送消息。</p>
-<blockquote>
-<p>Props</p>
-</blockquote>
-<p>组件实例的作用域是孤立的。这意味着不能并且不应该在子组件的模板内直接引用父组件的数据。可以使用 props 把数据传给子组件。</p>
-<pre><code>Vue.component(&apos;child&apos;, {
-  // 声明 props
-  props: [&apos;message&apos;],
-  // 就像 data 一样，prop 可以用在模板内
-  // 同样也可以在 vm 实例中像 “this.message” 这样使用
-  template: &apos;&lt;span&gt;{{ message }}&lt;/span&gt;&apos;
-})
-</code></pre><p>props也可以用 v-bind 绑定动态 props 到父组件的数据。每当父组件的数据变化时，也会传导给子组件。</p>
-<pre><code>&lt;div&gt;
-  &lt;input v-model=&quot;parentMsg&quot;&gt;
-  &lt;br&gt;
-  &lt;child :my-message=&quot;parentMsg&quot;&gt;&lt;/child&gt;
-&lt;/div&gt;
-</code></pre><p>(2)如果要子组件把数据传递给父组件，就需要自定义事件。</p>
-<p><a href="https://vuefe.cn/guide/components.html#自定义事件" target="_blank" rel="external">自定义事件</a></p>
-<h2 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h2><p>如果想要动态切换不同的组件，就需要使用动态组件，动态地绑定到它的 is 特性。</p>
-<pre><code>var vm = new Vue({
-  el: &apos;#example&apos;,
-  data: {
-    currentView: &apos;home&apos;
-  },
-  components: {
-    home: { /* ... */ },
-    posts: { /* ... */ },
-    archive: { /* ... */ }
-  }
-})
-
-&lt;component v-bind:is=&quot;currentView&quot;&gt;
-  &lt;!-- 组件在 vm.currentview 变化时改变！ --&gt;
-&lt;/component&gt;
-</code></pre><p>如果把切换出去的组件想要保留它的状态或避免重新渲染，添加keep-alive指令参数，非活动组件将被缓存。</p>
-<pre><code>&lt;keep-alive&gt;
-  &lt;component :is=&quot;currentView&quot;&gt;
-    &lt;!-- 非活动组件将被缓存！ --&gt;
-  &lt;/component&gt;
-&lt;/keep-alive&gt;
-</code></pre><p>##Slots分发内容</p>
-<p>一种方式用来混合父组件的内容与子组件自己的模板。比如说：</p>
-<pre><code>&lt;app&gt;
-  &lt;app-header&gt;&lt;/app-header&gt;
-  &lt;app-footer&gt;&lt;/app-footer&gt;
-&lt;/app&gt;
-</code></pre><p>app也有自己的模板内容，这时候就需要用到slots。</p>
-<blockquote>
-<p>编辑作用域</p>
-</blockquote>
-<p>父组件模板的内容在父组件作用域内编译；子组件模板的内容在子组件作用域内编译。</p>
-<p>分发内容就是在父组件作用域内编译。</p>
-<blockquote>
-<p>单个Slot</p>
-</blockquote>
-<p>子组件模板只有一个没有属性的 slot 时，父组件整个内容片段将插入到 slot 所在的 DOM 位置，并替换掉 slot 标签本身。</p>
-<p>子组件<code>&lt;my-component&gt;</code>：</p>
-<pre><code>&lt;div&gt;
-    &lt;h2&gt;I&apos;m the child title&lt;/h2&gt;
-    &lt;slot&gt;
-      如果没有分发内容则显示我。
-    &lt;/slot&gt;
-&lt;/div&gt;
-</code></pre><p>父组件：</p>
-<pre><code>&lt;div&gt;
-    &lt;h1&gt;I&apos;m the parent title&lt;/h1&gt;
-    &lt;my-component&gt;
-      &lt;p&gt;This is some original content&lt;/p&gt;
-      &lt;p&gt;This is some more original content&lt;/p&gt;
-    &lt;/my-component&gt;
-&lt;/div&gt;
-</code></pre><p>渲染结果：</p>
-<pre><code>&lt;div&gt;
-    &lt;h1&gt;I&apos;m the parent title&lt;/h1&gt;
-    &lt;div&gt;
-      &lt;h2&gt;I&apos;m the child title&lt;/h2&gt;
-      &lt;p&gt;This is some original content&lt;/p&gt;
-      &lt;p&gt;This is some more original content&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-</code></pre><blockquote>
-<p>具名Slots</p>
-</blockquote>
-<p>就是带有name的slot,根据name,对应替换slot。可以有一个匿名 slot ，它是默认 slot ，作为找不到匹配的内容片段的备用插槽。没有备用插槽内容则被抛弃。</p>
-<p>组件<code>&lt;app-layout&gt;</code>:</p>
-<pre><code>&lt;div class=&quot;container&quot;&gt;
-    &lt;header&gt;
-      &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-      &lt;slot&gt;&lt;/slot&gt;
-    &lt;/main&gt;
-    &lt;footer&gt;
-      &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
-    &lt;/footer&gt;
-&lt;/div&gt;
-</code></pre><p>父组件模版：</p>
-<pre><code>&lt;app-layout&gt;
-    &lt;h1 slot=&quot;header&quot;&gt;Here might be a page title&lt;/h1&gt;
-    &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
-    &lt;p&gt;And another one.&lt;/p&gt;
-    &lt;p slot=&quot;footer&quot;&gt;Here&apos;s some contact info&lt;/p&gt;
-&lt;/app-layout&gt;
-</code></pre><p>渲染结果：</p>
-<pre><code>&lt;div class=&quot;container&quot;&gt;
-    &lt;header&gt;
-      &lt;h1&gt;Here might be a page title&lt;/h1&gt;
-    &lt;/header&gt;
-    &lt;main&gt;
-      &lt;p&gt;A paragraph for the main content.&lt;/p&gt;
-      &lt;p&gt;And another one.&lt;/p&gt;
-    &lt;/main&gt;
-    &lt;footer&gt;
-      &lt;p&gt;Here&apos;s some contact info&lt;/p&gt;
-    &lt;/footer&gt;
-&lt;/div&gt;
-</code></pre>]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[redux实践]]></title>
       <url>http://xf2e.github.io/2016/11/23/redux_practice/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -494,6 +577,62 @@ new Vue({
     </entry>
     
     <entry>
+      <title><![CDATA[依赖注入]]></title>
+      <url>http://xf2e.github.io/2016/11/21/ng1%E4%B8%8Eng2%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E6%AF%94%E8%BE%83/</url>
+      <content type="html"><![CDATA[<h3 id="依赖注入是一种软件设计模式，他允许你移除软件组件的硬编码方式，替代的是通过依赖注入制造低耦合的组件不论在编译阶段还是在运行阶段。硬编码就是在程序中将代码写死，低耦合就是尽量让每个模块独立，相关的处理尽量在单个模块中完成。"><a href="#依赖注入是一种软件设计模式，他允许你移除软件组件的硬编码方式，替代的是通过依赖注入制造低耦合的组件不论在编译阶段还是在运行阶段。硬编码就是在程序中将代码写死，低耦合就是尽量让每个模块独立，相关的处理尽量在单个模块中完成。" class="headerlink" title="依赖注入是一种软件设计模式，他允许你移除软件组件的硬编码方式，替代的是通过依赖注入制造低耦合的组件不论在编译阶段还是在运行阶段。硬编码就是在程序中将代码写死，低耦合就是尽量让每个模块独立，相关的处理尽量在单个模块中完成。"></a>依赖注入是一种软件设计模式，他允许你移除软件组件的硬编码方式，替代的是通过依赖注入制造低耦合的组件不论在编译阶段还是在运行阶段。硬编码就是在程序中将代码写死，低耦合就是尽量让每个模块独立，相关的处理尽量在单个模块中完成。</h3><p><br></p>
+<h3 id="Angular1有一个内在的注入机制，他可以把你的App分成许多个可重复使用的组件，当需要的时候通过依赖注入把这些自减注入进你的App中去。在需要的地方进行参数传递，这种方法不仅对测试很有用，而且还不会污染全局变量，是很好的设计模式。"><a href="#Angular1有一个内在的注入机制，他可以把你的App分成许多个可重复使用的组件，当需要的时候通过依赖注入把这些自减注入进你的App中去。在需要的地方进行参数传递，这种方法不仅对测试很有用，而且还不会污染全局变量，是很好的设计模式。" class="headerlink" title="Angular1有一个内在的注入机制，他可以把你的App分成许多个可重复使用的组件，当需要的时候通过依赖注入把这些自减注入进你的App中去。在需要的地方进行参数传递，这种方法不仅对测试很有用，而且还不会污染全局变量，是很好的设计模式。"></a>Angular1有一个内在的注入机制，他可以把你的App分成许多个可重复使用的组件，当需要的时候通过依赖注入把这些自减注入进你的App中去。在需要的地方进行参数传递，这种方法不仅对测试很有用，而且还不会污染全局变量，是很好的设计模式。</h3><p><br></p>
+<h2 id="Angular1依赖注入的方法"><a href="#Angular1依赖注入的方法" class="headerlink" title="Angular1依赖注入的方法"></a>Angular1依赖注入的方法</h2><ol>
+<li>通过函数的参数进行推断式注入声明<h3 id="如果没有明确的声明，Angular1会假定名称就是依赖的名称。因此，它会在内部调用函数对象的toString-方法，分析并提取函数的参数列表，然后通过-injector将这些参数再注入进对象实例。下面是代码示例："><a href="#如果没有明确的声明，Angular1会假定名称就是依赖的名称。因此，它会在内部调用函数对象的toString-方法，分析并提取函数的参数列表，然后通过-injector将这些参数再注入进对象实例。下面是代码示例：" class="headerlink" title="如果没有明确的声明，Angular1会假定名称就是依赖的名称。因此，它会在内部调用函数对象的toString()方法，分析并提取函数的参数列表，然后通过$injector将这些参数再注入进对象实例。下面是代码示例："></a>如果没有明确的声明，Angular1会假定名称就是依赖的名称。因此，它会在内部调用函数对象的toString()方法，分析并提取函数的参数列表，然后通过$injector将这些参数再注入进对象实例。下面是代码示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function myController($scope,$timeout)&#123;</div><div class="line">	var updateTime = function()&#123;</div><div class="line">		$scope.clock = &#123;</div><div class="line">			time: new Date()</div><div class="line">		&#125;;</div><div class="line">		$timeout(function()&#123;</div><div class="line">			$scope.clock.time = new Date();</div><div class="line">			updateTime();</div><div class="line">		&#125;,1000)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div ng-controller=&apos;myController&apos;&gt;</div><div class="line">	&lt;span&gt;&#123;&#123;clock.time | data:&apos;yyyy-MM-dd hh:mm:ss&apos;&#125;&#125;&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<h3 id="创建了一个可以自动更新时间的应用，看看是如何进行依赖注入的。通过设置参数-scope和-timeout，angular1会在内部调用函数的toString-方法，分析并提取函数的参数列表，然后通过-injector将这些参数注入到对象的实例。"><a href="#创建了一个可以自动更新时间的应用，看看是如何进行依赖注入的。通过设置参数-scope和-timeout，angular1会在内部调用函数的toString-方法，分析并提取函数的参数列表，然后通过-injector将这些参数注入到对象的实例。" class="headerlink" title="创建了一个可以自动更新时间的应用，看看是如何进行依赖注入的。通过设置参数$scope和$timeout，angular1会在内部调用函数的toString()方法，分析并提取函数的参数列表，然后通过$injector将这些参数注入到对象的实例。"></a>创建了一个可以自动更新时间的应用，看看是如何进行依赖注入的。通过设置参数$scope和$timeout，angular1会在内部调用函数的toString()方法，分析并提取函数的参数列表，然后通过$injector将这些参数注入到对象的实例。</h3><p><br></p>
+<p><font color="#f00" size="5" face="黑体">注意：</font><br><br></p>
+<ul>
+<li>此方法只适合未经压缩混淆的代码，因为angular1需要解析未经压缩混淆的参数列表。<br><br></li>
+</ul>
+<ol>
+<li>显式的注入声明<h3 id="显式的明确定义一个函数在被调用时需要用到的依赖关系，通过这种方法声明依赖，即使在源代码被压缩，参数名称发生改变的情况下依然可以工作。代码示例："><a href="#显式的明确定义一个函数在被调用时需要用到的依赖关系，通过这种方法声明依赖，即使在源代码被压缩，参数名称发生改变的情况下依然可以工作。代码示例：" class="headerlink" title="显式的明确定义一个函数在被调用时需要用到的依赖关系，通过这种方法声明依赖，即使在源代码被压缩，参数名称发生改变的情况下依然可以工作。代码示例："></a>显式的明确定义一个函数在被调用时需要用到的依赖关系，通过这种方法声明依赖，即使在源代码被压缩，参数名称发生改变的情况下依然可以工作。代码示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var mycontrollerFactory = function mycontroller($scope,$timeout)&#123;</div><div class="line">	var updateTime = function () &#123;</div><div class="line">        $scope.clock = &#123;</div><div class="line">            time: new Date()</div><div class="line">        &#125;;</div><div class="line">        $timeout(function () &#123;</div><div class="line">            $scope.clock.time = new Date();</div><div class="line">            updateTime();</div><div class="line">        &#125;, 1000);</div><div class="line">    &#125;</div><div class="line">    updateTime();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mycontrollerFactory.$inject = [&apos;$scope&apos;,&apos;$timeout&apos;];</div></pre></td></tr></table></figure>
+<h3 id="显式的将我们需要的依赖注入到函数中，所以在函数中参数也可以分别换成其他字段。"><a href="#显式的将我们需要的依赖注入到函数中，所以在函数中参数也可以分别换成其他字段。" class="headerlink" title="显式的将我们需要的依赖注入到函数中，所以在函数中参数也可以分别换成其他字段。"></a>显式的将我们需要的依赖注入到函数中，所以在函数中参数也可以分别换成其他字段。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var mycontrollerFactory = function mycontroller(s,t)&#123;.....&#125;</div></pre></td></tr></table></figure>
+<p><font color="#f00" size="5" face="黑体">注意：</font><br><br></p>
+<ul>
+<li>对于这种声明方式，参数的顺序是十分重要的，因为$inject数组元素的顺序必须和注入的参数顺序一一对应。<br><br></li>
+</ul>
+<ol>
+<li>行内注入声明<h3 id="angular1提供的行内注入方法实际上是一种语法糖，它与前面的提到的通过-inject属性进行声明的原理是一样的，但是允许我们在函数定义的时候从行内将参数传入，这种方法方便简洁，而且避免了在定义的过程中使用临时变量。"><a href="#angular1提供的行内注入方法实际上是一种语法糖，它与前面的提到的通过-inject属性进行声明的原理是一样的，但是允许我们在函数定义的时候从行内将参数传入，这种方法方便简洁，而且避免了在定义的过程中使用临时变量。" class="headerlink" title="angular1提供的行内注入方法实际上是一种语法糖，它与前面的提到的通过$inject属性进行声明的原理是一样的，但是允许我们在函数定义的时候从行内将参数传入，这种方法方便简洁，而且避免了在定义的过程中使用临时变量。"></a>angular1提供的行内注入方法实际上是一种语法糖，它与前面的提到的通过$inject属性进行声明的原理是一样的，但是允许我们在函数定义的时候从行内将参数传入，这种方法方便简洁，而且避免了在定义的过程中使用临时变量。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">angular.module(&apos;app&apos;,[])</div><div class="line">.controller(&apos;mycontroller&apos;,[&apos;$scope&apos;,&apos;$timeout&apos;,function($scope,$timeout)&#123;</div><div class="line">	var updateTime = function () &#123;</div><div class="line">        $scope.clock = &#123;</div><div class="line">            time: new Date()</div><div class="line">        &#125;;</div><div class="line">        $timeout(function () &#123;</div><div class="line">            $scope.clock.time = new Date();</div><div class="line">            updateTime();</div><div class="line">        &#125;, 1000);</div><div class="line">    &#125;</div><div class="line">    updateTime();</div><div class="line">&#125;])</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><font color="#f00" size="5" face="黑体">注意：</font><br><br></p>
+<ul>
+<li>行内声明的方式允许我们直接传入一个参数数组，而不是一个函数，数组的元素是字符串，他们代表的是可以被注入到对象中的依赖名字，最后一个参数就是依赖注入的目标函数对象本身。</li>
+</ul>
+<h2 id="下面来对比一下ng1与ng2的依赖注入的区别，以login组件为例"><a href="#下面来对比一下ng1与ng2的依赖注入的区别，以login组件为例" class="headerlink" title="下面来对比一下ng1与ng2的依赖注入的区别，以login组件为例"></a>下面来对比一下ng1与ng2的依赖注入的区别，以login组件为例</h2><h2 id="先来看一下angular2的架构图"><a href="#先来看一下angular2的架构图" class="headerlink" title="先来看一下angular2的架构图"></a>先来看一下angular2的架构图</h2><p><img src="http://upload-images.jianshu.io/upload_images/949077-ce2193b397ce7ee8.png?imageMogr2/auto-orient/strip%7CimageView2/2" alt="providerToservice"><br><br><br><em>Angular1</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Login&#123;</div><div class="line">    formValue : &#123;login:string,password:string&#125; = &#123;login:&apos;&apos;,password:&apos;&apos;&#125;;</div><div class="line">    onSubmit()&#123;</div><div class="line">        const service = new LoginService();</div><div class="line">        service.login(this.formValue);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.component(&apos;login&apos;,&#123;</div><div class="line">    controller: Login,</div><div class="line">    controllerAs ; &apos;ctrl&apos;,</div><div class="line">    template:`</div><div class="line">        &lt;form ng-submit = &quot;ctrl.onSubmit()&quot;&gt;</div><div class="line">        Text &lt;input type=&quot;text&quot; ng-model=&quot;ctrl.formValue.login&gt;</div><div class="line">        password  &lt;input type=&quot;password&quot; ng-model=&quot;ctrl.formValue.password&quot;&gt;</div><div class="line">        &lt;button&gt;submit&lt;/button&gt;</div><div class="line">        &lt;/form&gt;</div><div class="line">    `</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><em>Angular2</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">    selector:&apos;login&apos;,</div><div class="line">    template:`</div><div class="line">        .....</div><div class="line">    `</div><div class="line">&#125;)</div><div class="line">class Login&#123;</div><div class="line">    onSubmit(formValue:&#123;login:string,password:string&#125;)&#123;</div><div class="line">        const service = new LoginService();</div><div class="line">        service.login(formValue);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="在这里直接把login组件绑定在login-service上的，很难进行独立测试，也降低了它复用的可能性"><a href="#在这里直接把login组件绑定在login-service上的，很难进行独立测试，也降低了它复用的可能性" class="headerlink" title="在这里直接把login组件绑定在login service上的，很难进行独立测试，也降低了它复用的可能性"></a>在这里直接把login组件绑定在login service上的，很难进行独立测试，也降低了它复用的可能性</h3><p><br></p>
+<h2 id="with-DI"><a href="#with-DI" class="headerlink" title="with DI"></a>with DI</h2><h3 id="在构造函数里面注射一个LoginService的实例，而不是直接创建"><a href="#在构造函数里面注射一个LoginService的实例，而不是直接创建" class="headerlink" title="在构造函数里面注射一个LoginService的实例，而不是直接创建"></a>在构造函数里面注射一个LoginService的实例，而不是直接创建</h3><p><em>Angular1</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class Login&#123;</div><div class="line">    formValue : &#123;login:string,password:string&#125; = &#123;login:&apos;&apos;,password:&apos;&apos;&#125;;</div><div class="line">    constructor(public service:LoginService)&#123;&#125;</div><div class="line">    onSubmit()&#123;</div><div class="line">        this.service.login(this.formValue);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="我们还需要告诉框架应该创建这个service的实例"><a href="#我们还需要告诉框架应该创建这个service的实例" class="headerlink" title="我们还需要告诉框架应该创建这个service的实例"></a>我们还需要告诉框架应该创建这个service的实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">module.service(&apos;login&apos;,LoginService);</div></pre></td></tr></table></figure>
+<p><br><br><em>Angular2</em></p>
+<h3 id="同样，在构造函数里面注射一个LoginSerivce的实例"><a href="#同样，在构造函数里面注射一个LoginSerivce的实例" class="headerlink" title="同样，在构造函数里面注射一个LoginSerivce的实例"></a>同样，在构造函数里面注射一个LoginSerivce的实例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Login&#123;</div><div class="line">    constructor(public service: LoginService)&#123;&#125;</div><div class="line">    onSubmit(formValue:&#123;login:string,password:string&#125;)&#123;</div><div class="line">        this.service.login(formValue);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>不同于ng1，我们需要将这个service添加到providers列表里面来实现<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@NgModule(&#123;</div><div class="line">    bootstrap:[Login],</div><div class="line">    providers:[LoginService],</div><div class="line">    declarations:[Login]</div><div class="line">&#125;)</div><div class="line">class AppModule&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="如果注入到它的根模块，则整个应用都可以调用，也可以注入到使用它的组件元数据里面-只需在装饰器加上一个providers配置项-这样注入的服务只对自己和后代可用"><a href="#如果注入到它的根模块，则整个应用都可以调用，也可以注入到使用它的组件元数据里面-只需在装饰器加上一个providers配置项-这样注入的服务只对自己和后代可用" class="headerlink" title="如果注入到它的根模块，则整个应用都可以调用，也可以注入到使用它的组件元数据里面,只需在装饰器加上一个providers配置项,这样注入的服务只对自己和后代可用"></a>如果注入到它的根模块，则整个应用都可以调用，也可以注入到使用它的组件元数据里面,只需在装饰器加上一个providers配置项,这样注入的服务只对自己和后代可用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Component(&#123;</div><div class="line">    selector:&apos;lr&apos;,</div><div class="line">    providers:[LoginService]</div><div class="line">&#125;)</div><div class="line">class APPLr&#123;&#125;</div></pre></td></tr></table></figure>
+<p><font color="#f00" size="5" face="黑体">注意：</font></p>
+<ul>
+<li>ng1依赖于字符串来配置DI，而ng2则默认使用注解的方式<h3 id="ng1里面有好几个Api可以用来给指令注入依赖，有些是根据名称注入的（LoginService）-有些依赖会一直自动提供（link函数里面的），有些需要使用require进行配置"><a href="#ng1里面有好几个Api可以用来给指令注入依赖，有些是根据名称注入的（LoginService）-有些依赖会一直自动提供（link函数里面的），有些需要使用require进行配置" class="headerlink" title="ng1里面有好几个Api可以用来给指令注入依赖，有些是根据名称注入的（LoginService）,有些依赖会一直自动提供（link函数里面的），有些需要使用require进行配置"></a>ng1里面有好几个Api可以用来给指令注入依赖，有些是根据名称注入的（LoginService）,有些依赖会一直自动提供（link函数里面的），有些需要使用require进行配置</h3><br><h3 id="ng2提供了统一的Api用来注入服务，指令等，所有这些内容都会被注入到组件的构造函数里面"><a href="#ng2提供了统一的Api用来注入服务，指令等，所有这些内容都会被注入到组件的构造函数里面" class="headerlink" title="ng2提供了统一的Api用来注入服务，指令等，所有这些内容都会被注入到组件的构造函数里面"></a>ng2提供了统一的Api用来注入服务，指令等，所有这些内容都会被注入到组件的构造函数里面</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3></li>
+<li>DI是ng的核心机制之一</li>
+<li>他可以使你的代码更加松耦合</li>
+<li>提升了可测试性</li>
+<li>ng2采用了统一的Api来给组件注入依赖</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[react的生命周期和组件]]></title>
       <url>http://xf2e.github.io/2016/11/21/react_component_lifeCycle/</url>
       <content type="html"><![CDATA[<blockquote>
@@ -542,6 +681,27 @@ new Vue({
 <h3 id="2【子组件】向【父组件】传值；"><a href="#2【子组件】向【父组件】传值；" class="headerlink" title="2【子组件】向【父组件】传值；"></a>2【子组件】向【父组件】传值；</h3><p>通过【子组件】控制自己的 state 然后告诉【父组件】的点击状态，然后在【父组件】中展示出来。因此，我们添加一个 change 事件来做交互。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">// 父组件</div><div class="line">var MyContainer = React.createClass(&#123;</div><div class="line">  getInitialState: function () &#123;</div><div class="line">    return &#123;</div><div class="line">      checked: false</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  onChildChanged: function (newState) &#123;</div><div class="line">    this.setState(&#123;</div><div class="line">      checked: newState</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div><div class="line">  render: function() &#123;</div><div class="line">    var isChecked = this.state.checked ? &apos;yes&apos; : &apos;no&apos;;</div><div class="line">    return (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;div&gt;Are you checked: &#123;isChecked&#125;&lt;/div&gt;</div><div class="line">        &lt;ToggleButton text=&quot;Toggle me&quot;</div><div class="line">          initialChecked=&#123;this.state.checked&#125;</div><div class="line">          callbackParent=&#123;this.onChildChanged&#125;</div><div class="line">          /&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 子组件</div><div class="line">var ToggleButton = React.createClass(&#123;</div><div class="line">  getInitialState: function () &#123;</div><div class="line">    return &#123;</div><div class="line">      checked: this.props.initialChecked</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  onTextChange: function () &#123;</div><div class="line">    var newState = !this.state.checked;</div><div class="line">    this.setState(&#123;</div><div class="line">      checked: newState</div><div class="line">    &#125;);</div><div class="line">    // 这里要注意：setState 是一个异步方法，所以需要操作缓存的当前值</div><div class="line">    this.props.callbackParent(newState);</div><div class="line">  &#125;,</div><div class="line">  render: function () &#123;</div><div class="line">    // 从【父组件】获取的值</div><div class="line">    var text = this.props.text;</div><div class="line">    // 组件自身的状态数据</div><div class="line">    var checked = this.state.checked;</div><div class="line"></div><div class="line">    return (</div><div class="line">        &lt;label&gt;&#123;text&#125;: &lt;input type=&quot;checkbox&quot; checked=&#123;checked&#125;                 onChange=&#123;this.onTextChange&#125; /&gt;&lt;/label&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <h3 id="3-没有任何嵌套关系的组件之间传值"><a href="#3-没有任何嵌套关系的组件之间传值" class="headerlink" title="3.没有任何嵌套关系的组件之间传值"></a>3.没有任何嵌套关系的组件之间传值</h3>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[何时使用指令，服务，控制器]]></title>
+      <url>http://xf2e.github.io/2016/11/18/angular_directive_service_ctrl/</url>
+      <content type="html"><![CDATA[<ul>
+<li>Directive(指令)</li>
+<li>Controller(控制器)</li>
+<li>Service(服务)<br>以上为angular1的核心概念，我们究竟什么以什么样的方式去使用它们。<h2 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h2><h3 id="Service是单例对象，会经常被传来传去，但是可以保证每次访问的都是同一个实例。所以很多Controler和Directive可以访问它内部的数值，所以它是一个存放数据，实现数据共享的好地方"><a href="#Service是单例对象，会经常被传来传去，但是可以保证每次访问的都是同一个实例。所以很多Controler和Directive可以访问它内部的数值，所以它是一个存放数据，实现数据共享的好地方" class="headerlink" title="Service是单例对象，会经常被传来传去，但是可以保证每次访问的都是同一个实例。所以很多Controler和Directive可以访问它内部的数值，所以它是一个存放数据，实现数据共享的好地方;"></a>Service是单例对象，会经常被传来传去，但是可以保证每次访问的都是同一个实例。所以很多Controler和Directive可以访问它内部的数值，所以它是一个存放数据，实现数据共享的好地方;</h3><br><h3 id="首先创建一个module"><a href="#首先创建一个module" class="headerlink" title="首先创建一个module,"></a>首先创建一个module,</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var module = angular.module(&apos;myModule,[]&apos;);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><br><br>下一步，创建一个服务，用来管理图书的BookService;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">module.factory(&apos;BookService&apos;,[&apos;rootScope&apos;,function($rootScope)&#123;</div><div class="line">	var service = &#123;</div><div class="line">		books:[</div><div class="line">			&#123; title: &quot;Magician&quot;, author: &quot;Raymond E. Feist&quot; &#125;,</div><div class="line">			&#123; title: &quot;The Hobbit&quot;, author: &quot;J.R.R Tolkien&quot; &#125;</div><div class="line">		],</div><div class="line">		addbook : function(book)&#123;</div><div class="line">			service.books.push(book);</div><div class="line">			$rootScope.$broadcast(&apos;books.updata&apos;);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	return service;</div><div class="line">&#125;])</div></pre></td></tr></table></figure></p>
+<h3 id="这里很好理解，一个对象里面有我要存放的书的集合，还有一个添加图书的方法，这个方法还会在应用上广播一个事件，告诉所有使用我们的服务的人，存放书的集合已经更新了，接下来就是要使用它的东西需要接收这个广播了。"><a href="#这里很好理解，一个对象里面有我要存放的书的集合，还有一个添加图书的方法，这个方法还会在应用上广播一个事件，告诉所有使用我们的服务的人，存放书的集合已经更新了，接下来就是要使用它的东西需要接收这个广播了。" class="headerlink" title="这里很好理解，一个对象里面有我要存放的书的集合，还有一个添加图书的方法，这个方法还会在应用上广播一个事件，告诉所有使用我们的服务的人，存放书的集合已经更新了，接下来就是要使用它的东西需要接收这个广播了。"></a>这里很好理解，一个对象里面有我要存放的书的集合，还有一个添加图书的方法，这个方法还会在应用上广播一个事件，告诉所有使用我们的服务的人，存放书的集合已经更新了，接下来就是要使用它的东西需要接收这个广播了。</h3><p><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">module.controller(&apos;books.list&apos;,[&apos;$scope&apos;,&apos;BookService&apos;,function($scope,BookServie)&#123;</div><div class="line">	$scope.$on(&apos;books.updata&apos;,function(event)&#123;</div><div class="line">		$scope.books = BookService.books;</div><div class="line">		$scope.$apply();</div><div class="line">	&#125;);</div><div class="line">	$scope.books = BookService.books;</div><div class="line">&#125;])</div></pre></td></tr></table></figure></p>
+<h3 id="这里就是将前面创建的BookService中存放的books赋值给了controller内部的scope对象。如果我们在controller上创建一个数组，其他地方也要处理书籍的信息，通过scope来维护数据会很麻烦，scope很容易变得混乱不堪，通过一种集中的途径进行数据的管理，更容易理解也可以使代码模块化。所以当需要在不同的地方共享数据的时候，就要依靠服务了，谁要用就注入到谁那里，就这么容易。"><a href="#这里就是将前面创建的BookService中存放的books赋值给了controller内部的scope对象。如果我们在controller上创建一个数组，其他地方也要处理书籍的信息，通过scope来维护数据会很麻烦，scope很容易变得混乱不堪，通过一种集中的途径进行数据的管理，更容易理解也可以使代码模块化。所以当需要在不同的地方共享数据的时候，就要依靠服务了，谁要用就注入到谁那里，就这么容易。" class="headerlink" title="这里就是将前面创建的BookService中存放的books赋值给了controller内部的scope对象。如果我们在controller上创建一个数组，其他地方也要处理书籍的信息，通过scope来维护数据会很麻烦，scope很容易变得混乱不堪，通过一种集中的途径进行数据的管理，更容易理解也可以使代码模块化。所以当需要在不同的地方共享数据的时候，就要依靠服务了，谁要用就注入到谁那里，就这么容易。"></a>这里就是将前面创建的BookService中存放的books赋值给了controller内部的scope对象。如果我们在controller上创建一个数组，其他地方也要处理书籍的信息，通过scope来维护数据会很麻烦，scope很容易变得混乱不堪，通过一种集中的途径进行数据的管理，更容易理解也可以使代码模块化。所以当需要在不同的地方共享数据的时候，就要依靠服务了，谁要用就注入到谁那里，就这么容易。</h3><p><br></p>
+<h3 id="形容服务有一个例子特别的形象，A团A连和B团B连去执行任务，"><a href="#形容服务有一个例子特别的形象，A团A连和B团B连去执行任务，" class="headerlink" title="形容服务有一个例子特别的形象，A团A连和B团B连去执行任务，"></a>形容服务有一个例子特别的形象，A团A连和B团B连去执行任务，</h3><p>A团A连发现敌情，要报告给B团B连，军队里只有服从上级，所以他只能报告给A团A营，在一直向上报告直到A、B共同的长官C旅，C旅在下发给B团，直到B连，要是有个特殊情况，相信这时候B连已经死光了，所以才有了通信部门的存在，而这里的通信部门也就是angular中的服务。</p>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><h3 id="Controller应该纯粹的把Service，依赖关系，以及其他对象串连在一起，通过scope关联到view上。Dom操作的部分最好把它放入指令里面"><a href="#Controller应该纯粹的把Service，依赖关系，以及其他对象串连在一起，通过scope关联到view上。Dom操作的部分最好把它放入指令里面" class="headerlink" title="Controller应该纯粹的把Service，依赖关系，以及其他对象串连在一起，通过scope关联到view上。Dom操作的部分最好把它放入指令里面;"></a>Controller应该纯粹的把Service，依赖关系，以及其他对象串连在一起，通过scope关联到view上。Dom操作的部分最好把它放入指令里面;</h3><p><br></p>
+<h2 id="Directive"><a href="#Directive" class="headerlink" title="Directive"></a>Directive</h2><h3 id="应用中最复杂的部分应该在指令中，下面来扩展前面的例子，提供一个按钮，通过这个按钮向服务里面添加一本书。"><a href="#应用中最复杂的部分应该在指令中，下面来扩展前面的例子，提供一个按钮，通过这个按钮向服务里面添加一本书。" class="headerlink" title="应用中最复杂的部分应该在指令中，下面来扩展前面的例子，提供一个按钮，通过这个按钮向服务里面添加一本书。"></a>应用中最复杂的部分应该在指令中，下面来扩展前面的例子，提供一个按钮，通过这个按钮向服务里面添加一本书。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module.directive(&apos;addBookButton&apos;,[&apos;BookService&apos;,function(BookService)&#123;</div><div class="line">	return &#123;</div><div class="line">		restrict:&apos;EA&apos;,</div><div class="line">		replace:true,</div><div class="line">		link:function(scope,ele,attrs)&#123;</div><div class="line">			ele.bind(&apos;click&apos;,function()&#123;</div><div class="line">				BookService.addbook(&#123; title: &quot;Star Wars&quot;, author: &quot;George Lucas&quot; &#125;);</div><div class="line">			&#125;)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;])</div></pre></td></tr></table></figure>
+<h3 id="创建了一个指令，目的是向books集合里面添加一本书，books已经注册在服务中，所以可以直接注入服务进行使用。下面将指令应用到视图中"><a href="#创建了一个指令，目的是向books集合里面添加一本书，books已经注册在服务中，所以可以直接注入服务进行使用。下面将指令应用到视图中" class="headerlink" title="创建了一个指令，目的是向books集合里面添加一本书，books已经注册在服务中，所以可以直接注入服务进行使用。下面将指令应用到视图中"></a>创建了一个指令，目的是向books集合里面添加一本书，books已经注册在服务中，所以可以直接注入服务进行使用。下面将指令应用到视图中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;button add-book-button&gt;Add Book&lt;/button&gt;</div></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="每当点击按钮的时候都会添加那本书，如果将控制器上面添加一个addBook方法呢，"><a href="#每当点击按钮的时候都会添加那本书，如果将控制器上面添加一个addBook方法呢，" class="headerlink" title="每当点击按钮的时候都会添加那本书，如果将控制器上面添加一个addBook方法呢，"></a>每当点击按钮的时候都会添加那本书，如果将控制器上面添加一个addBook方法呢，</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$scope.addBook = function()&#123;</div><div class="line">	 BookService.addBook( &#123; title: &quot;Star Wars&quot;, author: &quot;George Lucas&quot; &#125; );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="可以得到同样的结果，但是如果需要复用的话，只能copy这段代码，但是通过指令的方式，就会很方便了"><a href="#可以得到同样的结果，但是如果需要复用的话，只能copy这段代码，但是通过指令的方式，就会很方便了" class="headerlink" title="可以得到同样的结果，但是如果需要复用的话，只能copy这段代码，但是通过指令的方式，就会很方便了"></a>可以得到同样的结果，但是如果需要复用的话，只能copy这段代码，但是通过指令的方式，就会很方便了</h3>]]></content>
     </entry>
     
     <entry>
