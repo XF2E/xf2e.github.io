@@ -518,61 +518,18 @@
 
       
         
-          
-            <h2 id="TypeScript-特性"><a href="#TypeScript-特性" class="headerlink" title="TypeScript 特性"></a>TypeScript 特性</h2><blockquote>
+          <h2 id="TypeScript-特性"><a href="#TypeScript-特性" class="headerlink" title="TypeScript 特性"></a>TypeScript 特性</h2><blockquote>
 <p><em>这些规则找到与TypeScript特性相关的错误</em></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">member-ordering -强制执行成员排序。[object]</div></pre></td></tr></table></figure>
 <p><em>类成员的一致排序可以使类更容易阅读，导航和编辑。</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-internal-module -内部组合不允许module</div></pre></td></tr></table></figure>
 <p><em>使用module导致与外部模块概念混淆。使用新的namespace关键字。</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prefer-for-of -如果索引仅用于访问要迭代的数组，则建议在标准“for”循环中使用“for-of”循环。</div></pre></td></tr></table></figure>
-<p><em>当不需要索引时，for（… of …）循环更容易实现和读取。</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">typedef-whitespace -需要或不允许空白的类型定义。</div></pre></td></tr></table></figure>
-<p><em>两个参数都是对象,每个键应该具有的值”space”或”nospace”。</em></p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><blockquote>
-<p><em>这些规则捕获JS编程中的常见错误或其他容易产生错误的混淆结构：</em></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forin -需要for ... in用一个过滤语句if声明。</div></pre></td></tr></table></figure>
-<p><em>防止从对象的原型继承的属性的意外获取</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-arg -禁止使用的arguments.callee。</div></pre></td></tr></table></figure>
-<p><em>使用arguments.callee使得各种性能不容易优化</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-bitwise -不允许按位运算符。</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-conditional-assignment -在条件语句中不允许任何类型的赋值</div></pre></td></tr></table></figure>
-<p><em>使用arguments.callee使得各种性能不容易优化</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-console -禁止使用指定的console方法。</div></pre></td></tr></table></figure>
-<p><em>console方法是不适合于生产代码</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-construct -不允许访问的构造函数String，Number和Boolean。</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-debugger -不允许debugger声明。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-duplicate-variable -不允许重复变量声明在同一区块范围。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-eval -不允许eval函数调用。</div></pre></td></tr></table></figure>
-<p><em>它可以执行传给它的任何字符串</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-shadowed-variable -不允许隐藏变量声明。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-switch-case-fall-through -不允许直接通过case语句。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-unused-expression -禁止未使用的表达式语句。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-use-before-declare -它们的声明之前不容许变量使用。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-var-keyword -将不允许的使用var关键字。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">radix -使用parseInt要指定的radix参数parseInt。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">switch-default -需要一个default在所有情况下的switch语句。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">triple-equals -要求===和!==替换==和!=。</div></pre></td></tr></table></figure>
-<h2 id="可维护性"><a href="#可维护性" class="headerlink" title="可维护性"></a>可维护性</h2><p>这些规则使代码维护更容易：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eofline -确保以新的一行作为文件结尾。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">indent -强制执行与制表符或空格缩进。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">max-line-length -需要线得到一定最大长度下。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">no-trailing-whitespace -不允许在一行的末尾尾随空白。</div></pre></td></tr></table></figure>
-<p><em>保持版本控制差异清洁，因为它防止意外的空白被提交</em></p>
-<h2 id="样式"><a href="#样式" class="headerlink" title="样式"></a>样式</h2><p>这些规则在整个代码库中实施一致的风格：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class-name -强制执行PascalCased类和接口的名称。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">comment-format -强制执行单行注释格式规则。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">jsdoc格式 -强制执行JSDoc评论的基本格式规则。</div></pre></td></tr></table></figure>
-<blockquote>
-<p>每行包含一个星号和星号必须对齐<br>每个星号后面必须有空格或换行符（除了第一个和最后一个）<br>每行上的星号之前的唯一字符必须是空格字符<br>一行注释必须以/** 和开头<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">new-parens -通过调用构造函数时需要括号new关键字。</div></pre></td></tr></table></figure></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">one-line -需要指定的标记与它们之前的表达式在同一行。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">quotemark -需要字符串文字单或双引号。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">semicolon -在每个语句结尾实施一致的分号的使用。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">variable-name -检查各种错误的变量名。</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">whitespace -强制执行空白样式约定。</div></pre></td></tr></table></figure>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/21/tslint_rules/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -748,6 +705,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/24/vue_router1/" itemprop="url">
+                  vue路由
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-24T00:00:00+08:00" content="2016-11-24">
+              2016-11-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/24/vue_router1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/vue_router1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/24/vue_router1/" class="leancloud_visitors" data-flag-title="vue路由">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>以下分享来自团队童鞋<a href="https://github.com/Peggy3399">Peggy</a></p>
+<p>安装：</p>
+</blockquote>
+<pre><code>npm install vue-router --save
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/24/vue_router1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/24/vue_component/" itemprop="url">
                   vue组件
                 </a>
@@ -836,142 +929,6 @@
 <li>npm install 安装需要的依赖
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/24/vue_component/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/24/vue_router1/" itemprop="url">
-                  vue路由
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-24T00:00:00+08:00" content="2016-11-24">
-              2016-11-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/24/vue_router1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/24/vue_router1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/24/vue_router1/" class="leancloud_visitors" data-flag-title="vue路由">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>以下分享来自团队童鞋<a href="https://github.com/Peggy3399">Peggy</a></p>
-<p>安装：</p>
-</blockquote>
-<pre><code>npm install vue-router --save
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/24/vue_router1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
